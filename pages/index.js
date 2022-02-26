@@ -27,9 +27,9 @@ export default function Home() {
       </section>
 
       <section className = "my-2">
-        <h3 classNameName = "uppercase font-light text-sm text-zinc-500">Experience</h3>
+        <h3 className = "uppercase font-light text-sm text-zinc-500">Experience</h3>
         <div>
-          <ul classNameName= "m-0">
+          <ul className = "m-0">
             <li className = "flex flex-row items-baseline justify-between">
               <div className = "">Idea Explorer, ???</div>
               <div className = "text-sm font-light text-zinc-500 justify-self-end min-w-150">2022 — </div>

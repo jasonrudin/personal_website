@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className = "font-sans max-w-xl mx-auto min-h-screen flex flex-col justify-center py-8">
+    <div className = "font-sans max-w-xl mx-auto min-h-screen flex flex-col justify-center p-8">
       <Head>
         <title>Jason Rudin</title>
         <meta name="description" content="Jason Rudin's little corner of the internet." />

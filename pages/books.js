@@ -68,13 +68,13 @@ export default function Books() {
                     <li className="my-5">
                         <h3 className="text-sm font-light text-zinc-500">2018</h3>
                         <ul>
-                            <li class = "text-blue-600 underline"><a href="">The Power Broker</a></li>
-                            <li class = "underline"><a href="">The Alchemist</a></li>
-                            <li class = "text-blue-600 underline"><a href="">Making Cities Work</a></li>
-                            <li class = "underline"><a href="">Midnights Children</a></li>
-                            <li class = "underline"><a href="">The Golden Compass</a></li>
-                            <li class = "underline"><a href="">Principles</a></li>
-                            <li class = "underline"><a href="">Competing Against Luck</a></li>
+                            <li class = "text-blue-600 underline"><a href="https://www.amazon.com/Power-Broker-Robert-Moses-Fall/dp/0394720245/ref=sr_1_1?keywords=the+power+broker&qid=1646795014&s=books&sr=1-1">The Power Broker</a></li>
+                            <li class = "underline"><a href="https://www.amazon.com/Alchemist-Paulo-Coelho/dp/0062315005/ref=sr_1_1?crid=24L33SLIFNPFF&keywords=the+alchemist&qid=1646795018&sprefix=th%2Caps%2C1478&sr=8-1">The Alchemist</a></li>
+                            <li class = "text-blue-600 underline"><a href="https://www.amazon.com/Making-Cities-Work-Prospects-Policies/dp/0691131058/ref=sr_1_1?crid=1Z3Q2BCAH6LXL&keywords=making+cities+work&qid=1646795029&sprefix=maki%2Caps%2C1050&sr=8-1">Making Cities Work</a></li>
+                            <li class = "underline"><a href="https://www.amazon.com/Midnights-Children-Modern-Library-Novels/dp/0812976533/ref=sr_1_1?crid=1GJNTY9CUO65W&keywords=midnights+children&qid=1646795064&s=books&sprefix=midni%2Cstripbooks%2C1306&sr=1-1">Midnights Children</a></li>
+                            <li class = "underline"><a href="https://www.amazon.com/Golden-Compass-His-Dark-Materials/dp/0440418321/ref=sr_1_3?crid=EP3SIQGVEQHH&keywords=the+golden+compass&qid=1646795080&sprefix=the+gol%2Caps%2C1652&sr=8-3">The Golden Compass</a></li>
+                            <li class = "underline"><a href="https://www.amazon.com/Principles-Life-Work-Ray-Dalio/dp/1501124021/ref=sr_1_1?crid=3708KYAGD5YY6&keywords=principles&qid=1646795072&sprefix=p%2Caps%2C826&sr=8-1">Principles</a></li>
+                            <li class = "underline"><a href="https://www.amazon.com/Competing-Against-Luck-Innovation-Customer/dp/0062435612/ref=sr_1_1?crid=OQYRQH5BBVO9&keywords=competing+against+luck&qid=1646795115&s=books&sprefix=compet%2Cstripbooks%2C1328&sr=1-1">Competing Against Luck</a></li>
                         </ul>
                     </li>
 
@@ -85,7 +85,7 @@ export default function Books() {
                             <li class = "text-blue-600 underline"><a href="">Moonglow</a></li>
                             <li class = "underline"><a href="">The Private Lives of the Impressionists</a></li>
                             <li class = "underline"><a href="">Scarcity</a></li>
-                            <li class = "underline"><a href="">Evicted</a></li>
+                            <li class = "underline text-blue-600"><a href="">Evicted</a></li>
                             <li class = "underline"><a href="">Exit West</a></li>
                             <li class = "underline"><a href="">Americanah</a></li>
                             <li class = "underline"><a href="">American Gods</a></li>
@@ -106,7 +106,7 @@ export default function Books() {
                             <li class = "underline"><a href="">Gödel, Escher, Bach</a></li>
                             <li class = "underline"><a href="">Sapiens</a></li>
                             <li class = "underline"><a href="">Boys in the Boat</a></li>
-                            <li class = "underline"><a href="">Song of Solomon</a></li>
+                            <li class = "underline text-blue-600"><a href="">Song of Solomon</a></li>
                             <li class = "underline"><a href="">H is for Hawk</a></li>
                             <li class = "text-blue-600 underline"><a href="">The Amazing Adventures of Kavalier and Clay</a></li>
                             <li class = "underline"><a href="">Gratitude</a></li>

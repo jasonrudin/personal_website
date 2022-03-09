@@ -21,8 +21,8 @@ export default function Home() {
       <section className = "mt-4 mb-2">
         <h3 className = "uppercase font-light text-sm text-zinc-500">A Quick Intro</h3>
         <div>
-        <p className = "my-1">Thanks for stopping by! I think accelerating progress is one of the most important things to work on. In particular, I've long been fascinated by the connections between government and the private sector.</p>
-        <p className = "my-1">I'm proudly one of three brothers.</p>
+        <p className = "my-1">Thanks for stopping by! I think accelerating progress is one of the most important things to work on. I've long been fascinated by the connections between government and the private sector.</p>
+        <p className = "my-1">Proudly one of three brothers.</p>
         </div>
       </section>
       <section className = "my-2">

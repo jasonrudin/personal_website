@@ -25,30 +25,29 @@ export default function Home() {
         <p className = "my-1">I'm proudly one of three brothers.</p>
         </div>
       </section>
-
       <section className = "my-2">
         <h3 className = "uppercase font-light text-sm text-zinc-500">Experience</h3>
         <div>
           <ul className = "m-0">
             <li className = "flex flex-row items-baseline justify-between">
               <div className = "">Idea Explorer, ???</div>
-              <div className = "text-sm font-light text-zinc-500 justify-self-end min-w-150">2022 — </div>
+              <div className = "text-sm font-light text-zinc-500 justify-self-end min-w-[100px]">2022 — </div>
             </li>
             <li className = "flex flex-row items-baseline justify-between my-2">
               <div>Product Manager, Meta</div>
-              <div className = "text-sm font-light text-zinc-500">2018 — 2022</div>
+              <div className = "text-sm font-light text-zinc-500 min-w-[100px]">2018 — 2022</div>
             </li>
             <li className = "flex flex-row items-baseline justify-between my-2">
               <div>Strategy Extern, Google[X]</div>
-              <div className = "text-sm font-light text-zinc-500 min-w-150">2017 — 2018</div>
+              <div className = "text-sm font-light text-zinc-500 min-w-[100px]">2017 — 2018</div>
             </li>
             <li className = "flex flex-row items-baseline justify-between my-2">
               <div>Sr. Business Analyst, McKinsey</div>
-              <div className = "text-sm font-light text-zinc-500 min-w-150">2014 — 2018</div>
+              <div className = "text-sm font-light text-zinc-500 min-w-[100px]">2014 — 2018</div>
             </li>
             <li className = "flex flex-row items-baseline justify-between my-2">
               <div>Student, M&T Program at the University of Pennsylvania</div>
-              <div className = "text-sm font-light text-zinc-500 min-w-150">2010 — 2014</div>
+              <div className = "text-sm font-light text-zinc-500 min-w-[100px]">2010 — 2014</div>
             </li>
           </ul>
         </div>

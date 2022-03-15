@@ -3,31 +3,32 @@ import Link from 'next/link'
 
 export default function Books() {
     return (
-        <div classNameName="font-sans max-w-xl mx-auto min-h-screen flex flex-col justify-center py-8">
+        <div className = "font-sans max-w-xl mx-auto min-h-screen flex flex-col justify-center p-6">
             <Head>
                 <title>Jason Rudin</title>
-                <meta name="description" content="Jason Rudin's little corner of the internet." />
+                <meta name="description" content="Jason Rudin's corner of the internet." />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main classNameName="">
-                <header>
-                    <Link href="/"><a classNameName="text-xs underline text-zinc-500">← Home</a></Link>
-                    <h1 classNameName="text-2xl">Books</h1>
-                    <h2 classNameName="text-zinc-500">A running list of books I've read since 2015. Favorites are in blue.</h2>
+            <main>
+                <header className = "">
+                    <Link href="/"><a className="text-xs underline text-zinc-500">← Home</a></Link>
+                    <h1 className="text-2xl mt-2">Books</h1>
+                    <h2 className="text-zinc-500">A running list of books I've read since 2015. Favorites are in blue.</h2>
                 </header>
             </main>
             <section>
                 <ul>
-                    <li classNameName="my-5">
-                        <h3 classNameName="text-sm font-light text-zinc-500">2022</h3>
+                    <li className="my-4">
+                        <h3 className="text-sm font-light text-zinc-500">2022</h3>
                         <ul>
                             <li className = "underline "><a href="">The Catcher in the Rye</a></li>
                             <li className = "underline"><a href="">Sludge</a></li>
                             <li className = "underline text-blue-600"><a href="">All the Light we Cannot See</a></li>
+                            <li className = "underline text-blue-600"><a href="">Call Me By Your Name</a></li>
                         </ul>
                     </li>
-                    <li classNameName="my-5">
-                        <h3 classNameName="text-sm font-light text-zinc-500">2021</h3>
+                    <li className="my-4">
+                        <h3 className="text-sm font-light text-zinc-500">2021</h3>
                         <ul>
                             <li className = "underline"><a href="https://www.amazon.com/Call-Wild-Readers-Library-classNameics/dp/1954839146/ref=sr_1_9?crid=1S1RFL8BE5ATU&keywords=call+of+the+wild&qid=1646792761&sprefix=call+of+th%2Caps%2C762&sr=8-9">Call of the Wild</a></li>
                             <li className = "text-blue-600 underline"><a href="https://www.amazon.com/Old-Man-Sea-Ernest-Hemingway/dp/1781396809/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1646792705&sr=8-1">The Old Man and the Sea</a></li>
@@ -39,8 +40,8 @@ export default function Books() {
                             <li className = "underline"><a href="https://www.amazon.com/How-Not-Die-Discover-Scientifically/dp/1250066115/ref=sr_1_1?crid=2H8PDGX5EZ7UP&keywords=how+not+to+die&qid=1646792886&sprefix=how+not+to%2Caps%2C1606&sr=8-1">How Not to Die</a></li>
                         </ul>
                     </li>
-                    <li classNameName="my-5">
-                        <h3 classNameName="text-sm font-light text-zinc-500">2020</h3>
+                    <li className="my-4">
+                        <h3 className="text-sm font-light text-zinc-500">2020</h3>
                         <ul>
                             <li className = "text-blue-600 underline"><a href="https://www.amazon.com/Order-without-Design-Markets-Cities/dp/0262038765/ref=sr_1_1?crid=2UBNIL506OGOC&keywords=order+without+design&qid=1646794804&sprefix=order%2Caps%2C1703&sr=8-1">Order Without Design</a></li>
                             <li className = "text-blue-600 underline"><a href="https://www.amazon.com/Story-Lost-Child-Neapolitan-Novels/dp/1609452860/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1646794838&sr=1-1">The Story of a Lost Child</a></li>
@@ -48,8 +49,8 @@ export default function Books() {
                             <li className = "underline"><a href="https://www.amazon.com/Christmas-Carol-Charles-Dickens/dp/1503212831/ref=sr_1_1_sspa?crid=1DFEMZ4BHEIG8&keywords=a+christmas+carol&qid=1646792683&sprefix=a+chri%2Caps%2C1226&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyQkNNWDBQTjVDNUUmZW5jcnlwdGVkSWQ9QTA4ODA0MDgzRURLREozVjVPV0lRJmVuY3J5cHRlZEFkSWQ9QTA1NTQwMjAzMUQxTEhLMjdPTDJOJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==">A Christmas Carol</a></li>
                         </ul>
                     </li>
-                    <li classNameName="my-5">
-                        <h3 classNameName="text-sm font-light text-zinc-500">2019</h3>
+                    <li className="my-4">
+                        <h3 className="text-sm font-light text-zinc-500">2019</h3>
                         <ul>
                             <li className = "underline"><a href="https://www.amazon.com/Walt-Disney-Triumph-American-Imagination/dp/0679757473/ref=sr_1_1?keywords=Walt+Disney%3A+The+Triumph+of+the+American+Imagination&qid=1646793126&sr=8-1">Walt Disney: The Triumph of the American Imagination</a></li>
                             <li className = "text-blue-600 underline"><a href="https://www.amazon.com/Pattern-Language-Buildings-Construction-Environmental/dp/0195019199/ref=sr_1_1?crid=1ABOPNAOJYW7C&keywords=a+pattern+language&qid=1646793143&sprefix=a+patte%2Caps%2C1168&sr=8-1">A Pattern Language</a></li>
@@ -65,8 +66,8 @@ export default function Books() {
                             <li className = "underline"><a href="https://www.amazon.com/Churchill-Walking-Destiny-Andrew-Roberts/dp/1101980990/ref=sr_1_1?crid=1TAYPR968XJKS&keywords=walking+with+destiny&qid=1646793412&sprefix=walking+with+des%2Caps%2C768&sr=8-1">Walking With Destiny</a></li>
                         </ul>
                     </li>
-                    <li classNameName="my-5">
-                        <h3 classNameName="text-sm font-light text-zinc-500">2018</h3>
+                    <li className="my-4">
+                        <h3 className="text-sm font-light text-zinc-500">2018</h3>
                         <ul>
                             <li className = "text-blue-600 underline"><a href="https://www.amazon.com/Power-Broker-Robert-Moses-Fall/dp/0394720245/ref=sr_1_1?keywords=the+power+broker&qid=1646795014&s=books&sr=1-1">The Power Broker</a></li>
                             <li className = "underline"><a href="https://www.amazon.com/Alchemist-Paulo-Coelho/dp/0062315005/ref=sr_1_1?crid=24L33SLIFNPFF&keywords=the+alchemist&qid=1646795018&sprefix=th%2Caps%2C1478&sr=8-1">The Alchemist</a></li>
@@ -78,8 +79,8 @@ export default function Books() {
                         </ul>
                     </li>
 
-                    <li classNameName="my-5">
-                        <h3 classNameName="text-sm font-light text-zinc-500">2017</h3>
+                    <li className="my-4">
+                        <h3 className="text-sm font-light text-zinc-500">2017</h3>
                         <ul>
                             <li className = "underline"><a href="https://www.amazon.com/When-Breath-Becomes-Paul-Kalanithi/dp/081298840X/ref=sr_1_1?crid=299RYMLSDUSKS&keywords=when+breath+becomes+air&qid=1646795306&s=books&sprefix=when+breath+bec%2Cstripbooks%2C1163&sr=1-1">When Breath Becomes Air</a></li>
                             <li className = "text-blue-600 underline"><a href="https://www.amazon.com/Moonglow-Novel-Michael-Chabon/dp/0062225561/ref=sr_1_1?crid=238ZQ52N9HZ5E&keywords=moonglow&qid=1646795300&sprefix=the+golden+compass%2Caps%2C1513&sr=8-1">Moonglow</a></li>
@@ -99,8 +100,8 @@ export default function Books() {
                         </ul>
                     </li>
 
-                    <li classNameName="my-5">
-                        <h3 classNameName="text-sm font-light text-zinc-500">2016</h3>
+                    <li className="my-4">
+                        <h3 className="text-sm font-light text-zinc-500">2016</h3>
                         <ul>
                             <li className = "underline"><a href="">what if?</a></li>
                             <li className = "underline"><a href="">Gödel, Escher, Bach</a></li>
@@ -121,8 +122,8 @@ export default function Books() {
                         </ul>
                     </li>
 
-                    <li classNameName="my-5">
-                        <h3 classNameName="text-sm font-light text-zinc-500">2015</h3>
+                    <li className="my-4">
+                        <h3 className="text-sm font-light text-zinc-500">2015</h3>
                         <ul>
                             <li className = "underline"><a href="">Work Rules!</a></li>
                             <li className = "underline"><a href="">Difficult Men</a></li>

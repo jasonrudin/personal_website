@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className = "font-sans max-w-xl mx-auto min-h-screen flex flex-col justify-center p-6">
+    <div className = "font-sans max-w-xl min-h-screen mx-auto flex flex-col justify-center p-6">
       <Head>
         <title>Jason Rudin</title>
-        <meta name="description" content="Jason Rudin's little corner of the internet." />
+        <meta name="description" content="Jason Rudin's corner of the internet."/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -55,7 +55,7 @@ export default function Home() {
 
       <section className = "my-2">
         <h3 className = "uppercase font-light text-sm text-zinc-500">The other stuff</h3>
-        <p>Check out <Link href = "/books"><a className = "underline">books</a></Link> I've read and some art I made. I also built my dining room table. It doesn't wobble.</p>
+        <p>Check out <Link href = "/books"><a className = "underline">books</a></Link> I've read and some <Link href = "/art"><a className = "underline">art</a></Link> I made. I also built my dining room table. It doesn't wobble.</p>
       </section>
 
       <section className = "mt-2 mb-4">

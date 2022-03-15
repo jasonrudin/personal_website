@@ -17,9 +17,9 @@ export default function Art() {
                     <h2 className="text-zinc-500">I like to draw and paint sometimes.</h2>
                 </header>
             </main>
-            <section className = "">
-                {imageArray.map((image) => (
-                    <div className = "my-2">
+            <section className="">
+                {imageArray.map((image, index) => (
+                    <div className="my-2" key = {image.id}>
                         <Image
                             src={image.url}
                             width={image.width}
@@ -39,6 +39,7 @@ export default function Art() {
 
 const imageArray = [
     {
+        id: 1, 
         title: "Strawberries",
         medium: "Colored Pencil",
         url: "/static/img/art/strawberries.png",
@@ -47,6 +48,7 @@ const imageArray = [
         height: 265
     },
     {
+        id: 2, 
         title: "Abstract Blocks",
         medium: "Oil on Canvas",
         url: "/static/img/art/abstract_blocks.png",
@@ -55,6 +57,7 @@ const imageArray = [
         height: 503
     },
     {
+        id: 3, 
         title: "Abstract Blue",
         medium: "Oil on Canvas",
         url: "/static/img/art/abstract_blue.png",
@@ -63,6 +66,7 @@ const imageArray = [
         height: 666
     },
     {
+        id: 4, 
         title: "Ball and Glove",
         medium: "Colored Pencil",
         url: "/static/img/art/ball_and_glove.png",
@@ -71,6 +75,7 @@ const imageArray = [
         height: 637
     },
     {
+        id: 5, 
         title: "Florida Bridges",
         medium: "Oil on Canvas",
         url: "/static/img/art/bridges.png",
@@ -79,6 +84,7 @@ const imageArray = [
         height: 629
     },
     {
+        id: 6, 
         title: "Flowers",
         medium: "Oil on Canvas",
         url: "/static/img/art/flowers.png",
@@ -87,6 +93,7 @@ const imageArray = [
         height: 870
     },
     {
+        id: 7, 
         title: "Code Monkeys 1",
         medium: "3D Modeling (Maya)",
         url: "/static/img/art/code monkeys_1.png",
@@ -95,6 +102,7 @@ const imageArray = [
         height: 497
     },
     {
+        id: 8, 
         title: "Code Monkeys 2",
         medium: "3D Modeling (Maya)",
         url: "/static/img/art/code monkeys_2.png",
@@ -103,6 +111,7 @@ const imageArray = [
         height: 600
     },
     {
+        id: 9, 
         title: "Kilns",
         medium: "Charcoal on Paper",
         url: "/static/img/art/kilns.png",
@@ -111,6 +120,7 @@ const imageArray = [
         height: 1790
     },
     {
+        id: 10, 
         title: "Markers",
         medium: "Acrylic on Canvas",
         url: "/static/img/art/marker_tryptic.png",
@@ -119,6 +129,7 @@ const imageArray = [
         height: 626
     },
     {
+        id: 11,
         title: "Monsters Inc. Minimalist Poster",
         medium: "Digital Illustration",
         url: "/static/img/art/monsters_poster.png",
@@ -127,6 +138,7 @@ const imageArray = [
         height: 1350
     },
     {
+        id: 12,
         title: "Up Minimalist Poster",
         medium: "Digital Illustration",
         url: "/static/img/art/up_poster.png",
@@ -135,6 +147,7 @@ const imageArray = [
         height: 1346
     },
     {
+        id: 13,
         title: "Finding Nemo Minimalist Poster",
         medium: "Digital Illustration",
         url: "/static/img/art/nemo_poster.png",

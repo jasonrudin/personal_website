@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className = "font-sans max-w-xl min-h-screen mx-auto flex flex-col justify-center p-6">
+    <div className = "text-zinc-800 font-ss max-w-xl min-h-screen mx-auto flex flex-col justify-center p-6">
       <Head>
         <title>Jason Rudin</title>
         <meta name="description" content="Jason Rudin's corner of the internet."/>

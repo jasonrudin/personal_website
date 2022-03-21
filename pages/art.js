@@ -16,7 +16,7 @@ export default function Art() {
             </header>
             <section className="">
                 {artArray.map((image, index) => (
-                    <div className="mb-12 last:mb-0 md:flex">
+                    <div className="mb-12 last:mb-0 md:flex" key = {image.id}>
                         <div className="flex md:w-5/6">
                             {urlArrayMapper(image.imageArray)}
                         </div>

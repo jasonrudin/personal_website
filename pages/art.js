@@ -12,17 +12,17 @@ export default function Art() {
             </Head>
             <header className="">
                 <Link href="/"><a className="text-xs underline text-zinc-500">← Home</a></Link>
-                <h1 className="text-2xl mt-2">Art</h1>
+                <h1 className="text-4xl mt-8 mb-2">Art</h1>
             </header>
             <section className="">
                 {artArray.map((image, index) => (
-                    <div className="mb-12 last:mb-0 md:flex" key = {image.id}>
+                    <div className="mb-8 last:mb-0 md:flex" key = {image.id}>
                         <div className="flex md:w-5/6">
                             {urlArrayMapper(image.imageArray)}
                         </div>
-                        <div className="md:w-1/6 md:px-2">
+                        <div className="mt-2 leading-tight md:w-1/6 md:px-2">
                             <h3 className="text-xl">{image.title}</h3>
-                            <p className="">{image.medium}</p>
+                            <p className="text-zinc-500">{image.medium}</p>
                         </div>
                     </div>
                 ))}

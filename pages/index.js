@@ -21,7 +21,7 @@ export default function Home() {
       <section className = "mt-4 mb-2">
         <h3 className = "uppercase font-light text-sm text-zinc-500">A Quick Intro</h3>
         <div>
-        <p className = "my-1">Thanks for stopping by! I think accelerating progress is one of the most important things to work on. I've long been fascinated by the connections between government and the private sector.</p>
+        <p className = "my-1">Thanks for stopping by! I think accelerating progress is one of the most important things to work on. I am fascinated by the connections between government and the private sector.</p>
         <p className = "my-1">Proudly one of three brothers.</p>
         </div>
       </section>
@@ -30,7 +30,7 @@ export default function Home() {
         <div>
           <ul className = "m-0">
             <li className = "flex flex-row items-baseline justify-between">
-              <div className = "">Starting Something New™</div>
+              <div className = "">Starting Something New</div>
               <div className = "text-sm font-light text-zinc-500 justify-self-end min-w-[100px]">2022 — </div>
             </li>
             <li className = "flex flex-row items-baseline justify-between my-2">
@@ -55,12 +55,12 @@ export default function Home() {
 
       <section className = "my-2">
         <h3 className = "uppercase font-light text-sm text-zinc-500">The other stuff</h3>
-        <p>Check out <Link href = "/books"><a className = "underline underline-offset-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">books</a></Link> I've read and some <Link href = "/art"><a className = "underline underline-offset-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">art</a></Link> I made. I also built my dining room table. It doesn't wobble.</p>
+        <p>Check out <Link href = "/books"><a className = "underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">books</a></Link> I've read and some <Link href = "/art"><a className = "underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">art</a></Link> I made. I also built my dining room table. It doesn't wobble.</p>
       </section>
 
       <section className = "mt-2 mb-4">
         <h3 className = "uppercase font-light text-sm text-zinc-500">Contact Info</h3>
-        <p>Say hi on <a className = "underline underline-offset-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href = "https://twitter.com/jasonrudin">Twitter</a>, <a className = "underline underline-offset-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href = "https://www.linkedin.com/in/jasonrudin/">LinkedIn</a>, or email me at j.b.rudin [at] gmail [dot] com.</p>
+        <p>Say hi on <a className = "underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href = "https://twitter.com/jasonrudin">Twitter</a>, <a className = "underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href = "https://www.linkedin.com/in/jasonrudin/">LinkedIn</a>, or email me at j.b.rudin [at] gmail [dot] com.</p>
       </section>
 
       <footer className = "text-xs font-light text-zinc-500 min-w-150">Last updated: February 24, 2022</footer>

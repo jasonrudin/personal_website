@@ -19,14 +19,15 @@ export default function Art() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
                 <Link href="/">
-                <a className="fixed h-10 top-0 left-0 w-full bg-white border-b-[1px] z-10 px-6 py-3 text-xs underline text-zinc-500">← Home</a>
+                <a className=" fixed h-10 top-0 left-0 w-full bg-white border-b-[1px] z-10 px-6 py-3 text-xs underline text-zinc-500">← Home</a>
                 </Link>
           
-            <h1 className="text-4xl mt-8 mb-2">Art</h1>
-            <section className="">
+            <h1 className="text-4xl mt-8">Art</h1>
+            <ArtObjectNavigation updateActive = {updatePosition} currentlyActive = {activeObjectPosition}/>
+            <section className="mt-4">
                 <ArtList artData={artArray} currentlyActive={activeObjectPosition} />
             </section>
-            <ArtObjectNavigation updateActive = {updatePosition} currentlyActive = {activeObjectPosition}/>
+            
         </div>
     )
 }
@@ -43,9 +44,9 @@ function ArtObjectNavigation(props) {
 
     return (
         <div className = "hidden md:block">
-            <a href = "#" onClick = {() => handleEvent(-1)}>← Previous</a>
-            <span>{props.currentlyActive} of 500</span>
-            <a href = "#" onClick = {() => handleEvent(1)}>Next →</a>
+            <a href = "#" onClick = {() => handleEvent(-1)} className = "underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic">← Prev</a>
+            <span className = "mx-4 italic text-zinc-500">{props.currentlyActive + 1} of 500</span>
+            <a href = "#" onClick = {() => handleEvent(1) } className = "underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic">Next →</a>
         </div>
     )
 }
@@ -75,7 +76,7 @@ function ArtObect(props) {
 
 function ArtDescription(props) {
     return (
-        <div className="mt-2 leading-tight md:w-1/6 md:px-2 md:mt-0">
+        <div className="mt-2 leading-tight md:w-1/6 md:px-4 md:mt-0">
             <h3 className="text-xl">{props.image.title}</h3>
             <p className="text-zinc-500">{props.image.medium}</p>
         </div>

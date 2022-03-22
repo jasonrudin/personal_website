@@ -10,17 +10,19 @@ export default function Art() {
     const updatePosition = (x) => {
         setActiveObjectPosition(activeObjectPosition + x);
     }
+
     return (
-        <div className="font-ss max-w-4xl mx-auto min-h-screen flex flex-col justify-center p-6">
+        <div className="text-zinc-700 font-ss pt-20 max-w-4xl mx-auto flex flex-col justify-center p-6">
             <Head>
                 <title>Art</title>
                 <meta name="description" content="Jason Rudin's corner of the internet." />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <header className="">
-                <Link href="/"><a className="text-xs underline text-zinc-500">← Home</a></Link>
-                <h1 className="text-4xl mt-8 mb-2">Art</h1>
-            </header>
+                <Link href="/">
+                <a className="fixed h-10 top-0 left-0 w-full bg-white border-b-[1px] z-10 px-6 py-3 text-xs underline text-zinc-500">← Home</a>
+                </Link>
+          
+            <h1 className="text-4xl mt-8 mb-2">Art</h1>
             <section className="">
                 <ArtList artData={artArray} currentlyActive={activeObjectPosition} />
             </section>
@@ -30,9 +32,13 @@ export default function Art() {
 }
 
 function ArtObjectNavigation(props) {
-
     function handleEvent(x){
         props.updateActive(x);
+    }
+
+    function handleKeyPress(key){
+        var k = key.key;
+        console.log("hello");
     }
 
     return (
@@ -69,7 +75,7 @@ function ArtObect(props) {
 
 function ArtDescription(props) {
     return (
-        <div className="mt-2 leading-tight md:w-1/6 md:px-2">
+        <div className="mt-2 leading-tight md:w-1/6 md:px-2 md:mt-0">
             <h3 className="text-xl">{props.image.title}</h3>
             <p className="text-zinc-500">{props.image.medium}</p>
         </div>

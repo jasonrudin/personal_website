@@ -36,7 +36,7 @@ function ArtObjectNavigation(props) {
     }
 
     return (
-        <div>
+        <div className = "hidden md:block">
             <a href = "#" onClick = {() => handleEvent(-1)}>← Previous</a>
             <span>{props.currentlyActive} of 500</span>
             <a href = "#" onClick = {() => handleEvent(1)}>Next →</a>

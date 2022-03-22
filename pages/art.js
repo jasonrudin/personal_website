@@ -1,8 +1,15 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 
 export default function Art() {
+    const [activeObjectPosition, setActiveObjectPosition] = useState(0);
+
+    const updatePosition = (x) => {
+        setActiveObjectPosition(activeObjectPosition + x);
+    }
     return (
         <div className="font-ss max-w-4xl mx-auto min-h-screen flex flex-col justify-center p-6">
             <Head>
@@ -15,42 +22,137 @@ export default function Art() {
                 <h1 className="text-4xl mt-8 mb-2">Art</h1>
             </header>
             <section className="">
-                {artArray.map((image, index) => (
-                    <div className="mb-8 last:mb-0 md:flex" key = {image.id}>
-                        <div className="flex md:w-5/6">
-                            {urlArrayMapper(image.imageArray)}
-                        </div>
-                        <div className="mt-2 leading-tight md:w-1/6 md:px-2">
-                            <h3 className="text-xl">{image.title}</h3>
-                            <p className="text-zinc-500">{image.medium}</p>
-                        </div>
-                    </div>
-                ))}
+                <ArtList artData={artArray} currentlyActive={activeObjectPosition} />
             </section>
-
-
+            <ArtObjectNavigation updateActive = {updatePosition} currentlyActive = {activeObjectPosition}/>
         </div>
     )
 }
 
-//Output the 'images' section (to be paired with a single description for the piece of art).
-function urlArrayMapper(imageArray) {
+function ArtObjectNavigation(props) {
+
+    function handleEvent(x){
+        props.updateActive(x);
+    }
+
     return (
-        imageArray.map((img, index) => (
-            <div className="w-full mr-2 last:mr-0" key={img.id}>
-                <Image
-                    src={img.url}
-                    width={img.width}
-                    height={img.height}
-                    layout="responsive"
-                    className= ""
-                    quality={100}
-                    alt={img.alt}
-                />
-            </div>
+        <div>
+            <a href = "#" onClick = {() => handleEvent(-1)}>← Previous</a>
+            <span>{props.currentlyActive} of 500</span>
+            <a href = "#" onClick = {() => handleEvent(1)}>Next →</a>
+        </div>
+    )
+}
+
+function ArtList(props) {
+    //If you are on desktop (screen size > 768px), only render the art object in the position thats currently active.
+    return (
+        props.artData.map((image, index) => (
+            <ArtObect art={image} key={image.id} isActiveOnDesktop={index == props.currentlyActive ? true : false} />
         ))
     );
 }
+
+function ArtObect(props) {
+    const hiddenOnDesktop = "mb-8 last:mb-0 md:hidden"
+    const shownOnDesktop = "mb-8 last:mb-0 md:flex"
+
+    return (
+        <div className={props.isActiveOnDesktop ? shownOnDesktop : hiddenOnDesktop} >
+            <div className="flex md:w-5/6">
+                <ArtImages imageList={props.art.imageArray} />
+            </div>
+            <ArtDescription image={props.art} />
+        </div>
+    );
+}
+
+function ArtDescription(props) {
+    return (
+        <div className="mt-2 leading-tight md:w-1/6 md:px-2">
+            <h3 className="text-xl">{props.image.title}</h3>
+            <p className="text-zinc-500">{props.image.medium}</p>
+        </div>
+    );
+}
+
+//Output the 'images' section (to be paired with a single description for the piece of art).
+function ArtImages(props) {
+    return (
+        props.imageList.map((image, index) => (
+            <ArtImage img={image} key={image.id} />
+        ))
+    );
+}
+
+
+class ArtImage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isFullScreen: false
+        };
+    }
+
+    normalSize = "w-full mr-2 last:mr-0";
+
+    updateImageSize() {
+        if (this.state.isFullScreen) {
+            this.setState({ isFullScreen: false });
+        }
+        else {
+            this.setState({ isFullScreen: true });
+        }
+        console.log(this.state.isFullScreen);
+    }
+
+    render() {
+        return (
+            <div className={this.normalSize} onClick={() => this.updateImageSize()}>
+                <Image
+                    src={this.props.img.url}
+                    width={this.props.img.width}
+                    height={this.props.img.height}
+                    alt={this.props.img.alt}
+                    layout="responsive"
+                    className=""
+                    quality={100}
+                />
+            </div>
+        );
+    }
+}
+
+const testArray = [
+    {
+        id: 1,
+        title: "Strawberries",
+        medium: "Colored Pencil",
+        imageArray: [
+            {
+                url: "/static/img/art/strawberries.png",
+                width: 361,
+                height: 265,
+                alt: "Strawberries on a white background.",
+                id: 1
+            }
+        ]
+    },
+    {
+        id: 2,
+        title: "Blocks",
+        medium: "Oil on Canvas",
+        imageArray: [
+            {
+                url: "/static/img/art/abstract_blocks.png",
+                width: 1000,
+                height: 503,
+                alt: "Blocks painted from above.",
+                id: 1
+            }
+        ]
+    }
+]
 
 const artArray = [
     {
@@ -160,20 +262,6 @@ const artArray = [
     },
     {
         id: 8,
-        title: "Flowers",
-        medium: "Oil on Canvas",
-        imageArray: [
-            {
-                url: "/static/img/art/flowers.png",
-                width: 700,
-                height: 870,
-                alt: "White flowers in a glass vase.",
-                id: 1
-            }
-        ]
-    },
-    {
-        id: 9,
         title: "Kilns",
         medium: "Charcoal on Paper",
         imageArray: [
@@ -188,7 +276,7 @@ const artArray = [
     },
 
     {
-        id: 10,
+        id: 9,
         title: "Pixar Movie Posters",
         medium: "Digital Illustration",
         imageArray: [

@@ -6,9 +6,19 @@ import ReactDOM from 'react-dom';
 
 export default function Art() {
     const [activeObjectPosition, setActiveObjectPosition] = useState(0);
+    const artData = artArray;
 
     const updatePosition = (x) => {
-        setActiveObjectPosition(activeObjectPosition + x);
+        let newPosition = activeObjectPosition + x;
+        if (newPosition >= artData.length){
+            setActiveObjectPosition(0);
+        }
+        else if(newPosition < 0){
+            setActiveObjectPosition(artData.length-1);
+        }
+        else{
+            setActiveObjectPosition(newPosition);
+        }
     }
 
     return (
@@ -23,9 +33,9 @@ export default function Art() {
                 </Link>
           
             <h1 className="text-4xl mt-8">Art</h1>
-            <ArtObjectNavigation updateActive = {updatePosition} currentlyActive = {activeObjectPosition}/>
+            <ArtObjectNavigation updateActive = {updatePosition} currentlyActive = {activeObjectPosition} artData = {artData}/>
             <section className="mt-4">
-                <ArtList artData={artArray} currentlyActive={activeObjectPosition} />
+                <ArtList artData={artData} currentlyActive={activeObjectPosition} />
             </section>
             
         </div>
@@ -45,7 +55,7 @@ function ArtObjectNavigation(props) {
     return (
         <div className = "hidden md:block">
             <a href = "#" onClick = {() => handleEvent(-1)} className = "underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic">← Prev</a>
-            <span className = "mx-4 italic text-zinc-500">{props.currentlyActive + 1} of 500</span>
+            <span className = "mx-4 italic text-zinc-500">{props.currentlyActive + 1} of {props.artData.length}</span>
             <a href = "#" onClick = {() => handleEvent(1) } className = "underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic">Next →</a>
         </div>
     )

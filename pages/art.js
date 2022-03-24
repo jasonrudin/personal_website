@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 export default function Art() {
@@ -10,13 +10,13 @@ export default function Art() {
 
     const updatePosition = (x) => {
         let newPosition = activeObjectPosition + x;
-        if (newPosition >= artData.length){
+        if (newPosition >= artData.length) {
             setActiveObjectPosition(0);
         }
-        else if(newPosition < 0){
-            setActiveObjectPosition(artData.length-1);
+        else if (newPosition < 0) {
+            setActiveObjectPosition(artData.length - 1);
         }
-        else{
+        else {
             setActiveObjectPosition(newPosition);
         }
     }
@@ -26,37 +26,39 @@ export default function Art() {
             <Head>
                 <title>Art</title>
                 <meta name="description" content="Jason Rudin's corner of the internet." />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+                <link rel="manifest" href="/favicon/site.webmanifest" />
             </Head>
-                <Link href="/">
-                <a className=" fixed h-10 top-0 left-0 w-full bg-white border-b-[1px] z-10 px-6 py-3 text-xs underline text-zinc-500">← Home</a>
-                </Link>
-          
+            <Link href="/">
+                <a className="fixed h-10 top-0 left-0 w-full bg-white border-b-[1px] z-10 px-6 py-3 text-xs underline text-zinc-500">← Home</a>
+            </Link>
             <h1 className="text-4xl mt-8">Art</h1>
-            <ArtObjectNavigation updateActive = {updatePosition} currentlyActive = {activeObjectPosition} artData = {artData}/>
+            <ArtObjectNavigation updateActive={updatePosition} currentlyActive={activeObjectPosition} artData={artData} />
             <section className="mt-4">
                 <ArtList artData={artData} currentlyActive={activeObjectPosition} />
             </section>
-            
+
         </div>
     )
 }
 
 function ArtObjectNavigation(props) {
-    function handleEvent(x){
+    function handleEvent(x) {
         props.updateActive(x);
     }
 
-    function handleKeyPress(key){
+    function handleKeyPress(key) {
         var k = key.key;
         console.log("hello");
     }
 
     return (
-        <div className = "hidden md:block">
-            <a href = "#" onClick = {() => handleEvent(-1)} className = "underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic">← Prev</a>
-            <span className = "mx-4 italic text-zinc-500">{props.currentlyActive + 1} of {props.artData.length}</span>
-            <a href = "#" onClick = {() => handleEvent(1) } className = "underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic">Next →</a>
+        <div className="hidden md:block">
+            <a href="#" onClick={() => handleEvent(-1)} className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic">← Prev</a>
+            <span className="mx-4 italic text-zinc-500">{props.currentlyActive + 1} of {props.artData.length}</span>
+            <a href="#" onClick={() => handleEvent(1)} className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic">Next →</a>
         </div>
     )
 }
@@ -103,41 +105,80 @@ function ArtImages(props) {
 }
 
 
-class ArtImage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isFullScreen: false
+function ArtImage(props) {
+    const [isFullScreen, setFullScreen] = useState(false);
+    const { windowHeight, windowWidth } = useWindowDimensions();
+    let fullSizeImageWidth = 500;
+    let artAspectRatio = props.img.height / props.img.width;
+    let windowAspectRatio = windowHeight / windowWidth;
+    const hasWindow = typeof window !== 'undefined';
+
+    //Scale up the image based on the dimensions of the window.
+    if(windowHeight >= windowWidth || windowWidth < props.img.width){
+        console.log(windowWidth + ", Image width: " + props.img.width);
+        fullSizeImageWidth = windowWidth;
+    }
+    else{
+        fullSizeImageWidth = Math.floor((windowHeight/ props.img.height) * props.img.width);
+    }
+
+    let styleTest = {
+        width: fullSizeImageWidth + 'px',
+    }
+
+    let normalSize = 'mr-2 last:mr-0 w-full hover:cursor-pointer';
+    let fullSize = 'fixed bg-zinc-900 top-0 left-2/4 -translate-x-1/2 z-20 mr-2 last:mr-0 max-w-full';
+
+    let updateImageSize = function () {
+        if (isFullScreen) {
+            setFullScreen(false);
+        }
+        else {
+            setFullScreen(true);
+        }
+    }
+
+    return (
+        <div className={isFullScreen ? fullSize : normalSize} onClick={() => updateImageSize()} style={isFullScreen ? styleTest : {}}>
+            <Image
+                src={props.img.url}
+                width={props.img.width}
+                height={props.img.height}
+                alt={props.img.alt}
+                layout="responsive"
+                className=""
+                quality={100}
+            />
+        </div>
+    );
+}
+
+function useWindowDimensions() {
+    const hasWindow = typeof window !== 'undefined';
+
+    function getWindowDimensions() {
+        const windowWidth = hasWindow ? window.innerWidth : null;
+        const windowHeight = hasWindow ? window.innerHeight : null;
+        return {
+            windowWidth,
+            windowHeight,
         };
     }
 
-    normalSize = "w-full mr-2 last:mr-0";
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
-    updateImageSize() {
-        if (this.state.isFullScreen) {
-            this.setState({ isFullScreen: false });
-        }
-        else {
-            this.setState({ isFullScreen: true });
-        }
-        console.log(this.state.isFullScreen);
-    }
+    useEffect(() => {
+        if (hasWindow) {
+            function handleResize() {
+                setWindowDimensions(getWindowDimensions());
+            }
 
-    render() {
-        return (
-            <div className={this.normalSize} onClick={() => this.updateImageSize()}>
-                <Image
-                    src={this.props.img.url}
-                    width={this.props.img.width}
-                    height={this.props.img.height}
-                    alt={this.props.img.alt}
-                    layout="responsive"
-                    className=""
-                    quality={100}
-                />
-            </div>
-        );
-    }
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
+    }, [hasWindow]);
+
+    return windowDimensions;
 }
 
 const testArray = [

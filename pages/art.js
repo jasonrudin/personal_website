@@ -22,7 +22,7 @@ export default function Art() {
     }
 
     return (
-        <div className="text-zinc-700 font-ss pt-20 max-w-4xl mx-auto flex flex-col justify-center p-6">
+        <div className="text-zinc-700 font-ss pt-20 max-w-3xl mx-auto flex flex-col justify-center p-6">
             <Head>
                 <title>Art</title>
                 <meta name="description" content="Jason Rudin's corner of the internet." />
@@ -74,11 +74,11 @@ function ArtList(props) {
 
 function ArtObect(props) {
     const hiddenOnDesktop = "mb-8 last:mb-0 md:hidden"
-    const shownOnDesktop = "mb-8 last:mb-0 md:flex"
+    const shownOnDesktop = "mb-8 last:mb-0 md:flex md:relative"
 
     return (
         <div className={props.isActiveOnDesktop ? shownOnDesktop : hiddenOnDesktop} >
-            <div className="flex md:w-5/6">
+            <div className="flex md:w-full">
                 <ArtImages imageList={props.art.imageArray} />
             </div>
             <ArtDescription image={props.art} />
@@ -88,7 +88,7 @@ function ArtObect(props) {
 
 function ArtDescription(props) {
     return (
-        <div className="mt-2 leading-tight md:w-1/6 md:px-4 md:mt-0">
+        <div className="mt-2 leading-tight md:w-1/6 md:px-4 md:mt-0 md:absolute md:-right-[16.67%]">
             <h3 className="text-xl">{props.image.title}</h3>
             <p className="text-zinc-500">{props.image.medium}</p>
         </div>
@@ -104,13 +104,10 @@ function ArtImages(props) {
     );
 }
 
-
 function ArtImage(props) {
     const [isFullScreen, setFullScreen] = useState(false);
     const { windowHeight, windowWidth } = useWindowDimensions();
     let fullSizeImageWidth = 500;
-    let artAspectRatio = props.img.height / props.img.width;
-    let windowAspectRatio = windowHeight / windowWidth;
     const hasWindow = typeof window !== 'undefined';
 
     //Scale up the image based on the dimensions of the window.
@@ -127,6 +124,8 @@ function ArtImage(props) {
     }
 
     let normalSize = 'mr-2 last:mr-0 w-full hover:cursor-pointer';
+
+    //I'm cheating a little bit here. The 'style' of the width of what is being rendered doesn't update in the case where the browser still has h < w, but the window is narrower than the image. I fixed it by adding a max width to the css, but I think the right way to do this is to update the style on browser resize events. Because right now I'm not re-calling the full size adjustment ever (the image has already been rendered), or at least until we go into mobile mode in which case it doesn't matter. The image dynmically resizes fine once its already at full size because <Image> takes care of that responsiveness.
     let fullSize = 'fixed bg-zinc-900 top-0 left-2/4 -translate-x-1/2 z-20 mr-2 last:mr-0 max-w-full';
 
     let updateImageSize = function () {

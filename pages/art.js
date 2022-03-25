@@ -38,8 +38,8 @@ export default function Art() {
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
                 <link rel="manifest" href="/favicon/site.webmanifest" />
-                <Script src="https://kit.fontawesome.com/4ff0ff850c.js" crossorigin="anonymous"></Script>
             </Head>
+            <Script src="https://kit.fontawesome.com/4ff0ff850c.js" crossorigin="anonymous"/>
             <header className="relative">
                 <Link href="/">
                     <a className="fixed h-10 top-0 left-0 w-full bg-white border-b-[1px] z-10 px-6 py-2 underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic md:p-0 md:h-auto md:border-0 md:relative md:w-auto md:bg-transparent md:text-xs">← Home</a>

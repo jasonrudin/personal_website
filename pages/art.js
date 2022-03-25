@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 
 export default function Art() {
     const [activeObjectPosition, setActiveObjectPosition] = useState(0);
+    const [fullScreenArtObjectPosition, setFullScreenArtObject] = useState(null);
     const artData = artArray;
 
     const updatePosition = (x) => {
@@ -21,8 +22,12 @@ export default function Art() {
         }
     }
 
+    const updateFullScreenArt = function (x) {
+        setFullScreenArtObject(x);
+    }
+
     return (
-        <div className="text-zinc-700 font-ss pt-20 max-w-3xl mx-auto flex flex-col justify-center p-6">
+        <div className="text-zinc-700 font-ss pt-20 max-w-3xl mx-auto flex flex-col justify-center p-6 md:pb-0">
             <Head>
                 <title>Art</title>
                 <meta name="description" content="Jason Rudin's corner of the internet." />
@@ -31,13 +36,18 @@ export default function Art() {
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
                 <link rel="manifest" href="/favicon/site.webmanifest" />
             </Head>
-            <Link href="/">
-                <a className="fixed h-10 top-0 left-0 w-full bg-white border-b-[1px] z-10 px-6 py-3 text-xs underline text-zinc-500">← Home</a>
-            </Link>
-            <h1 className="text-4xl mt-8">Art</h1>
-            <ArtObjectNavigation updateActive={updatePosition} currentlyActive={activeObjectPosition} artData={artData} />
+            <header className="relative">
+                <Link href="/">
+                    <a className="fixed h-10 top-0 left-0 w-full bg-white border-b-[1px] z-10 px-6 py-2 underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic md:p-0 md:h-auto md:border-0 md:relative md:w-auto md:bg-transparent md:text-xs">← Home</a>
+                </Link>
+                <h1 className="text-4xl mt-8 md:mt-4">Art</h1>
+                <ArtObjectNavigation updateActive={updatePosition} currentlyActive={activeObjectPosition} artData={artData} />
+            </header>
             <section className="mt-4">
-                <ArtList artData={artData} currentlyActive={activeObjectPosition} />
+                <ArtList artData={artData} currentlyActive={activeObjectPosition} updateFullScreenArt={updateFullScreenArt} />
+                {fullScreenArtObjectPosition != null &&
+                    <FullScreenArtObject updateFullScreenArt={updateFullScreenArt} fullScreenArtObjectPosition={fullScreenArtObjectPosition} artData={artData}></FullScreenArtObject>
+                }
             </section>
 
         </div>
@@ -67,19 +77,19 @@ function ArtList(props) {
     //If you are on desktop (screen size > 768px), only render the art object in the position thats currently active.
     return (
         props.artData.map((image, index) => (
-            <ArtObect art={image} key={image.id} isActiveOnDesktop={index == props.currentlyActive ? true : false} />
+            <ArtObect art={image} key={image.id} isActiveOnDesktop={index == props.currentlyActive ? true : false} updateFullScreenArt={props.updateFullScreenArt} />
         ))
     );
 }
 
 function ArtObect(props) {
     const hiddenOnDesktop = "mb-8 last:mb-0 md:hidden"
-    const shownOnDesktop = "mb-8 last:mb-0 md:flex md:relative"
+    const shownOnDesktop = "mb-8 last:mb-0 md:flex md:relative md:mb-0"
 
     return (
         <div className={props.isActiveOnDesktop ? shownOnDesktop : hiddenOnDesktop} >
             <div className="flex md:w-full">
-                <ArtImages imageList={props.art.imageArray} />
+                <ArtImages imageList={props.art.imageArray} updateFullScreenArt={props.updateFullScreenArt} />
             </div>
             <ArtDescription image={props.art} />
         </div>
@@ -97,48 +107,22 @@ function ArtDescription(props) {
 
 //Output the 'images' section (to be paired with a single description for the piece of art).
 function ArtImages(props) {
+    let width = {
+        width: '100%',
+    }
+
+    let appliedCSS = 'mr-2 last:mr-0 w-full hover:cursor-pointer';
+
     return (
         props.imageList.map((image, index) => (
-            <ArtImage img={image} key={image.id} />
+            <ArtImage img={image} key={image.id} appliedCSS={appliedCSS} width={width} updateFullScreenArt={props.updateFullScreenArt} />
         ))
     );
 }
 
 function ArtImage(props) {
-    const [isFullScreen, setFullScreen] = useState(false);
-    const { windowHeight, windowWidth } = useWindowDimensions();
-    let fullSizeImageWidth = 500;
-    const hasWindow = typeof window !== 'undefined';
-
-    //Scale up the image based on the dimensions of the window.
-    if(windowHeight >= windowWidth || windowWidth < props.img.width){
-        console.log(windowWidth + ", Image width: " + props.img.width);
-        fullSizeImageWidth = windowWidth;
-    }
-    else{
-        fullSizeImageWidth = Math.floor((windowHeight/ props.img.height) * props.img.width);
-    }
-
-    let styleTest = {
-        width: fullSizeImageWidth + 'px',
-    }
-
-    let normalSize = 'mr-2 last:mr-0 w-full hover:cursor-pointer';
-
-    //I'm cheating a little bit here. The 'style' of the width of what is being rendered doesn't update in the case where the browser still has h < w, but the window is narrower than the image. I fixed it by adding a max width to the css, but I think the right way to do this is to update the style on browser resize events. Because right now I'm not re-calling the full size adjustment ever (the image has already been rendered), or at least until we go into mobile mode in which case it doesn't matter. The image dynmically resizes fine once its already at full size because <Image> takes care of that responsiveness.
-    let fullSize = 'fixed bg-zinc-900 top-0 left-2/4 -translate-x-1/2 z-20 mr-2 last:mr-0 max-w-full';
-
-    let updateImageSize = function () {
-        if (isFullScreen) {
-            setFullScreen(false);
-        }
-        else {
-            setFullScreen(true);
-        }
-    }
-
     return (
-        <div className={isFullScreen ? fullSize : normalSize} onClick={() => updateImageSize()} style={isFullScreen ? styleTest : {}}>
+        <div className={props.appliedCSS} onClick={() => props.updateFullScreenArt(props.img.id)} style={props.width}>
             <Image
                 src={props.img.url}
                 width={props.img.width}
@@ -150,6 +134,43 @@ function ArtImage(props) {
             />
         </div>
     );
+}
+
+function FullScreenArtObject(props) {
+    //figure out which image to render 
+    let fullScreenImage = null;
+    for (let i = 0; i < props.artData.length; i++) {
+        for (let j = 0; j < props.artData[i].imageArray.length; j++) {
+            if (props.artData[i].imageArray[j].id === props.fullScreenArtObjectPosition) {
+                fullScreenImage = props.artData[i].imageArray[j];
+            }
+        }
+    }
+
+    //figure out the right width to render correctly
+    const { windowHeight, windowWidth } = useWindowDimensions();
+    let fullSizeImageWidth = 500;
+    const hasWindow = typeof window !== 'undefined';
+    if (windowHeight >= windowWidth || windowWidth < fullScreenImage.width) {
+        fullSizeImageWidth = windowWidth;
+    }
+    else {
+        fullSizeImageWidth = Math.floor((windowHeight / fullScreenImage.height) * fullScreenImage.width);
+    }
+    let fullSizeWidth = {
+        width: fullSizeImageWidth + 'px',
+    }
+
+    //CSS to Apply
+    //I'm cheating a little bit here. The 'style' of the width of what is being rendered doesn't update in the case where the browser still has h < w, but the window is narrower than the image. I fixed it by adding a max width to the css, but I think the right way to do this is to update the style on browser resize events. Because right now I'm not re-calling the full size adjustment ever (the image has already been rendered), or at least until we go into mobile mode in which case it doesn't matter. The image dynmically resizes fine once its already at full size because <Image> takes care of that responsiveness.
+    let appliedCSS = 'fixed bg-zinc-900 top-0 left-2/4 -translate-x-1/2 z-20 mr-2 last:mr-0 max-w-full';
+
+
+    return (
+        <div className='fixed z-20 inset-0 bg-zinc-900 hover:cursor-pointer' onClick={() => props.updateFullScreenArt(null)}>
+            <ArtImage img={fullScreenImage} key={fullScreenImage.id} width={fullSizeWidth} appliedCSS={appliedCSS} updateFullScreenArt={props.updateFullScreenArt} />
+        </div>
+    )
 }
 
 function useWindowDimensions() {
@@ -180,37 +201,6 @@ function useWindowDimensions() {
     return windowDimensions;
 }
 
-const testArray = [
-    {
-        id: 1,
-        title: "Strawberries",
-        medium: "Colored Pencil",
-        imageArray: [
-            {
-                url: "/static/img/art/strawberries.png",
-                width: 361,
-                height: 265,
-                alt: "Strawberries on a white background.",
-                id: 1
-            }
-        ]
-    },
-    {
-        id: 2,
-        title: "Blocks",
-        medium: "Oil on Canvas",
-        imageArray: [
-            {
-                url: "/static/img/art/abstract_blocks.png",
-                width: 1000,
-                height: 503,
-                alt: "Blocks painted from above.",
-                id: 1
-            }
-        ]
-    }
-]
-
 const artArray = [
     {
         id: 1,
@@ -236,7 +226,7 @@ const artArray = [
                 width: 1000,
                 height: 503,
                 alt: "Blocks painted from above.",
-                id: 1
+                id: 2
             }
         ]
     },
@@ -250,7 +240,7 @@ const artArray = [
                 width: 1000,
                 height: 666,
                 alt: "Gradations of blue and white.",
-                id: 1
+                id: 3
             }
         ]
     },
@@ -264,7 +254,7 @@ const artArray = [
                 width: 800,
                 height: 637,
                 alt: "A baseball glove and ball.",
-                id: 1
+                id: 4
             }
         ]
     },
@@ -278,7 +268,7 @@ const artArray = [
                 width: 800,
                 height: 629,
                 alt: "Two bridges in the Florida Keys.",
-                id: 1
+                id: 5
             }
         ]
     },
@@ -292,7 +282,7 @@ const artArray = [
                 width: 700,
                 height: 870,
                 alt: "White flowers in a glass vase.",
-                id: 1
+                id: 6
             }
         ]
     },
@@ -306,14 +296,14 @@ const artArray = [
                 width: 800,
                 height: 497,
                 alt: "A late night of code monkey coding.",
-                id: 1
+                id: 7
             },
             {
                 url: "/static/img/art/code monkeys_2.png",
                 width: 800,
                 height: 600,
                 alt: "Close-up of a code monkey desk.",
-                id: 2
+                id: 8
             }
         ]
     },
@@ -327,7 +317,7 @@ const artArray = [
                 width: 1362,
                 height: 1790,
                 alt: "Sketch drawing of pottery kilns.",
-                id: 1
+                id: 9
             }
         ]
     },
@@ -342,21 +332,21 @@ const artArray = [
                 width: 900,
                 height: 1350,
                 alt: "Finding Nemo minimalist movie poster.",
-                id: 1
+                id: 10
             },
             {
                 url: "/static/img/art/up_poster.png",
                 width: 900,
                 height: 1350,
                 alt: "Up minimalist movie poster.",
-                id: 2
+                id: 11
             },
             {
                 url: "/static/img/art/monsters_poster.png",
                 width: 900,
                 height: 1350,
                 alt: "Monsters, Inc. minimalist movie poster.",
-                id: 3
+                id: 12
             }
         ]
     },

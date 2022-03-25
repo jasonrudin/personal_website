@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import Script from 'next/script'
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import ReactDOM from 'react-dom';
 
 export default function Art() {
@@ -35,6 +38,7 @@ export default function Art() {
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
                 <link rel="manifest" href="/favicon/site.webmanifest" />
+                <Script src="https://kit.fontawesome.com/4ff0ff850c.js" crossorigin="anonymous"></Script>
             </Head>
             <header className="relative">
                 <Link href="/">
@@ -168,6 +172,7 @@ function FullScreenArtObject(props) {
 
     return (
         <div className='fixed z-20 inset-0 bg-zinc-900 hover:cursor-pointer' onClick={() => props.updateFullScreenArt(null)}>
+            <span className = "text-white inline-block px-4 pt-4"><FontAwesomeIcon icon={faXmark} size = "lg"/></span>
             <ArtImage img={fullScreenImage} key={fullScreenImage.id} width={fullSizeWidth} appliedCSS={appliedCSS} updateFullScreenArt={props.updateFullScreenArt} />
         </div>
     )

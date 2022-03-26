@@ -4,8 +4,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className="text-zinc-700 font-ss max-w-xl pt-32 mx-auto flex flex-col justify-center p-6">
-
+    <div className="text-zinc-700 font-ss max-w-xl mx-auto flex flex-col justify-center p-6 pt-20">
       <Head>
         <title>Jason Rudin</title>
         <meta name="description" content="Jason Rudin's corner of the internet." />
@@ -60,7 +59,7 @@ export default function Home() {
 
       <section className="my-4">
         <h3 className="font-light text-lg text-zinc-700 mb-2">The other stuff</h3>
-        <p>Check out <Link href="/books"><a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">books</a></Link> I've read and some <Link href="/art"><a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">art</a></Link> I made. I also built my dining room table. It doesn't wobble.</p>
+        <p>Check out some of my favorite <Link href="/books"><a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">books</a></Link> and some <Link href="/art"><a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">art</a></Link> I made. I also built my dining room table. It doesn't wobble.</p>
       </section>
 
       <section className="mt-4 mb-8">
@@ -68,7 +67,7 @@ export default function Home() {
         <p>Say hi on <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://twitter.com/jasonrudin">Twitter</a>, <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://www.linkedin.com/in/jasonrudin/">LinkedIn</a>, or email me at j.b.rudin [at] gmail [dot] com.</p>
       </section>
 
-      <footer className="text-xs font-light text-zinc-500 min-w-150">Last updated: March 22, 2022</footer>
+      <footer className="text-xs font-light text-zinc-500 min-w-150">Last updated: March 26, 2022</footer>
     </div>
   )
 }

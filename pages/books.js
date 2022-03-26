@@ -5,7 +5,7 @@ export default function Books() {
     return (
         <div className="text-zinc-700 font-ss max-w-xl mx-auto flex flex-col justify-center p-6 pt-20">
             <Head>
-                <title>Jason Rudin</title>
+                <title>Books</title>
                 <meta name="description" content="Jason Rudin's corner of the internet." />
                 <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />

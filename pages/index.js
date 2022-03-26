@@ -8,7 +8,6 @@ export default function Home() {
       <Head>
         <title>Jason Rudin</title>
         <meta name="description" content="Jason Rudin's corner of the internet." />
-        <meta name="description" content="Jason Rudin's corner of the internet." />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
@@ -59,7 +58,7 @@ export default function Home() {
 
       <section className="my-4">
         <h3 className="font-light text-lg text-zinc-700 mb-2">The other stuff</h3>
-        <p>Check out some of my favorite <Link href="/books"><a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">books</a></Link> and some <Link href="/art"><a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">art</a></Link> I made. I also built my dining room table. It doesn't wobble.</p>
+        <p>Check out some <Link href="/art"><a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">art</a></Link> I made and <Link href="/books"><a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">books</a></Link> I've read. I also built my dining room table. It doesn't wobble.</p>
       </section>
 
       <section className="mt-4 mb-8">

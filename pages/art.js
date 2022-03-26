@@ -29,6 +29,27 @@ export default function Art() {
         setFullScreenArtObject(x);
     }
 
+    const hasWindow = typeof window !== 'undefined';
+
+
+    if(hasWindow){
+        useEffect(() => {
+            if (hasWindow) {
+                function handleKeyPress(e) {
+                    if(e.key === 'ArrowRight'){
+                        updatePosition(1);
+                    } 
+                    if(e.key === 'ArrowLeft'){
+                        updatePosition(-1);
+                    }
+                }
+    
+                window.addEventListener('keydown', handleKeyPress);
+                return () => window.removeEventListener('keydown', handleKeyPress);
+            }
+        });
+    }
+
     return (
         <div className="text-zinc-700 font-ss pt-20 max-w-3xl mx-auto flex flex-col justify-center p-6 md:pb-0">
             <Head>
@@ -61,11 +82,6 @@ export default function Art() {
 function ArtObjectNavigation(props) {
     function handleEvent(x) {
         props.updateActive(x);
-    }
-
-    function handleKeyPress(key) {
-        var k = key.key;
-        console.log("hello");
     }
 
     return (
@@ -306,7 +322,7 @@ const artArray = [
             {
                 url: "/static/img/art/code monkeys_2.png",
                 width: 800,
-                height: 600,
+                height: 497,
                 alt: "Close-up of a code monkey desk.",
                 id: 8
             }

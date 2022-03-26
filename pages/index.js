@@ -33,7 +33,7 @@ export default function Home() {
         <div>
           <ul className="">
             <li className="flex flex-row items-baseline justify-between">
-              <div className="">Starting Something New</div>
+              <div className="">Starting something new</div>
               <div className="text-sm font-light text-zinc-500 justify-self-end min-w-[100px]">2022 — </div>
             </li>
             <li className="flex flex-row items-baseline justify-between my-1">
@@ -63,7 +63,7 @@ export default function Home() {
 
       <section className="mt-4 mb-8">
         <h3 className="font-light text-lg text-zinc-700 mb-2">Contact Info</h3>
-        <p>Say hi on <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://twitter.com/jasonrudin">Twitter</a>, <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://www.linkedin.com/in/jasonrudin/">LinkedIn</a>, or email me at j.b.rudin [at] gmail [dot] com.</p>
+        <p>Say hi on <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://twitter.com/jasonrudin" target="_blank" rel="noopener noreferrer">Twitter</a>, <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://www.linkedin.com/in/jasonrudin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, or email me at j.b.rudin [at] gmail [dot] com.</p>
       </section>
 
       <footer className="text-xs font-light text-zinc-500 min-w-150">Last updated: March 26, 2022</footer>

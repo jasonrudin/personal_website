@@ -88,7 +88,7 @@ function ArtList(props) {
 
 function ArtObect(props) {
     const hiddenOnDesktop = "mb-8 last:mb-0 md:hidden"
-    const shownOnDesktop = "mb-8 last:mb-0 md:flex md:relative md:mb-0"
+    const shownOnDesktop = "mb-8 last:mb-0 md:flex md:relative md:flex-col md:mb-0"
 
     return (
         <div className={props.isActiveOnDesktop ? shownOnDesktop : hiddenOnDesktop} >
@@ -102,7 +102,7 @@ function ArtObect(props) {
 
 function ArtDescription(props) {
     return (
-        <div className="mt-2 leading-tight md:w-1/6 md:px-4 md:mt-0 md:absolute md:-right-[16.67%]">
+        <div className="mt-2 leading-tight lg:w-2/6 lg:px-4 lg:mt-0 lg:absolute lg:-right-[33.33%]">
             <h3 className="text-xl">{props.image.title}</h3>
             <p className="text-zinc-500">{props.image.medium}</p>
         </div>

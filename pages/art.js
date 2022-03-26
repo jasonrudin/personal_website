@@ -32,18 +32,18 @@ export default function Art() {
     const hasWindow = typeof window !== 'undefined';
 
 
-    if(hasWindow){
+    if (hasWindow) {
         useEffect(() => {
             if (hasWindow) {
                 function handleKeyPress(e) {
-                    if(e.key === 'ArrowRight'){
+                    if (e.key === 'ArrowRight') {
                         updatePosition(1);
-                    } 
-                    if(e.key === 'ArrowLeft'){
+                    }
+                    if (e.key === 'ArrowLeft') {
                         updatePosition(-1);
                     }
                 }
-    
+
                 window.addEventListener('keydown', handleKeyPress);
                 return () => window.removeEventListener('keydown', handleKeyPress);
             }
@@ -60,7 +60,7 @@ export default function Art() {
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
                 <link rel="manifest" href="/favicon/site.webmanifest" />
             </Head>
-            <Script src="https://kit.fontawesome.com/4ff0ff850c.js" crossorigin="anonymous"/>
+            <Script src="https://kit.fontawesome.com/4ff0ff850c.js" crossorigin="anonymous" />
             <header className="relative">
                 <Link href="/">
                     <a className="fixed h-10 top-0 left-0 w-full bg-white border-b-[1px] z-10 px-6 py-2 underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 text-zinc-500 hover:text-zinc-700 transition duration-75 italic md:p-0 md:h-auto md:border-0 md:relative md:w-auto md:bg-transparent md:text-xs">← Home</a>
@@ -118,7 +118,7 @@ function ArtObect(props) {
 
 function ArtDescription(props) {
     return (
-        <div className="mt-2 leading-tight lg:w-2/6 lg:px-4 lg:mt-0 lg:absolute lg:-right-[33.33%]">
+        <div className="mt-2 leading-tight md:pb-8 lg:w-2/6 lg:px-4 lg:mt-0 lg:absolute lg:-right-[33.33%]">
             <h3 className="text-xl">{props.image.title}</h3>
             <p className="text-zinc-500">{props.image.medium}</p>
         </div>
@@ -188,7 +188,7 @@ function FullScreenArtObject(props) {
 
     return (
         <div className='fixed z-20 inset-0 bg-zinc-900 hover:cursor-pointer' onClick={() => props.updateFullScreenArt(null)}>
-            <span className = "text-white inline-block px-4 pt-4"><FontAwesomeIcon icon={faXmark} size = "lg"/></span>
+            <span className="text-white inline-block px-4 pt-4"><FontAwesomeIcon icon={faXmark} size="lg" /></span>
             <ArtImage img={fullScreenImage} key={fullScreenImage.id} width={fullSizeWidth} appliedCSS={appliedCSS} updateFullScreenArt={props.updateFullScreenArt} />
         </div>
     )

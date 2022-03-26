@@ -32,23 +32,21 @@ export default function Art() {
     const hasWindow = typeof window !== 'undefined';
 
 
-    if (hasWindow) {
-        useEffect(() => {
-            if (hasWindow) {
-                function handleKeyPress(e) {
-                    if (e.key === 'ArrowRight') {
-                        updatePosition(1);
-                    }
-                    if (e.key === 'ArrowLeft') {
-                        updatePosition(-1);
-                    }
+    useEffect(() => {
+        if (hasWindow) {
+            function handleKeyPress(e) {
+                if (e.key === 'ArrowRight') {
+                    updatePosition(1);
                 }
-
-                window.addEventListener('keydown', handleKeyPress);
-                return () => window.removeEventListener('keydown', handleKeyPress);
+                if (e.key === 'ArrowLeft') {
+                    updatePosition(-1);
+                }
             }
-        });
-    }
+
+            window.addEventListener('keydown', handleKeyPress);
+            return () => window.removeEventListener('keydown', handleKeyPress);
+        }
+    });
 
     return (
         <div className="text-zinc-700 font-ss pt-20 max-w-3xl mx-auto flex flex-col justify-center p-6 md:pb-0">

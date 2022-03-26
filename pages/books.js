@@ -29,7 +29,7 @@ export default function Books() {
                         <ul>
                             {
                                 cityBooksArray.map((book, key) => (
-                                    <BookItem book={book} />
+                                    <BookItem book={book} key = {book.id} />
                                 ))
                             }
                         </ul>
@@ -39,7 +39,7 @@ export default function Books() {
                         <ul>
                             {
                                 fictionBooksArray.map((book, key) => (
-                                    <BookItem book={book} />
+                                    <BookItem book={book} key = {book.id}/>
                                 ))
                             }
                         </ul>

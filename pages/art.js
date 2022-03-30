@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Script from 'next/script'
 import React, { useState, useEffect } from 'react';
 import { FullScreenGalleryImage } from '../components/FullScreenGalleryImage';
-import { ArtList } from '../components/ArtList';
+import { GalleryList } from '../components/GalleryList';
 import { GalleryNavigation } from '../components/GalleryNavigation';
 import { artArray } from '../components/artData';
 
@@ -67,7 +67,7 @@ export default function Art() {
                 <GalleryNavigation updateActive={updatePosition} currentlyActive={activeObjectPosition} artData={artData} />
             </header>
             <section className="mt-4">
-                <ArtList artData={artData} currentlyActive={activeObjectPosition} updateFullScreenArt={updateFullScreenArt} />
+                <GalleryList artData={artData} currentlyActive={activeObjectPosition} updateFullScreenArt={updateFullScreenArt} pageType = "art"/>
                 {fullScreenArtObjectPosition != null &&
                     <FullScreenGalleryImage updateFullScreenArt={updateFullScreenArt} fullScreenArtObjectPosition={fullScreenArtObjectPosition} artData={artData}></FullScreenGalleryImage>
                 }

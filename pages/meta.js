@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Script from 'next/script'
 import React, { useState, useEffect } from 'react';
 import { FullScreenGalleryImage } from '../components/FullScreenGalleryImage';
-import { ArtList } from '../components/ArtList';
+import { GalleryList } from '../components/GalleryList';
 import { GalleryNavigation } from '../components/GalleryNavigation';
 import { projectDataArray } from '../components/projectData';
 
@@ -67,7 +67,7 @@ export default function MetaProjects() {
                 <GalleryNavigation updateActive={updatePosition} currentlyActive={activeObjectPosition} artData={projectData} />
             </header>
             <section className="mt-4">
-                <ArtList artData={projectData} currentlyActive={activeObjectPosition} updateFullScreenArt={updateFullScreenArt} />
+                <GalleryList artData={projectData} currentlyActive={activeObjectPosition} updateFullScreenArt={updateFullScreenArt} pageType = "meta" />
                 {fullScreenArtObjectPosition != null &&
                     <FullScreenGalleryImage updateFullScreenArt={updateFullScreenArt} fullScreenArtObjectPosition={fullScreenArtObjectPosition} artData={projectData}></FullScreenGalleryImage>
                 }

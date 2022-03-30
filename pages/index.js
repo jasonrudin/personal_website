@@ -37,7 +37,7 @@ export default function Home() {
               <div className="text-sm font-light text-zinc-500 justify-self-end min-w-[100px]">2022 — </div>
             </li>
             <li className="flex flex-row items-baseline justify-between my-1">
-              <div>Product Manager, Meta</div>
+              <div><Link href="/meta"><a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">Product Manager, Meta</a></Link></div>
               <div className="text-sm font-light text-zinc-500 min-w-[100px]">2018 — 2022</div>
             </li>
             <li className="flex flex-row items-baseline justify-between my-1">

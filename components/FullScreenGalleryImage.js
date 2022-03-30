@@ -18,12 +18,9 @@ export function FullScreenGalleryImage(props) {
     const { windowHeight, windowWidth } = useWindowDimensions();
     let fullSizeImageWidth = 500;
     const hasWindow = typeof window !== 'undefined';
-    if (windowHeight >= windowWidth || windowWidth < fullScreenImage.width) {
-        fullSizeImageWidth = windowWidth;
-    }
-    else {
-        fullSizeImageWidth = Math.floor((windowHeight / fullScreenImage.height) * fullScreenImage.width);
-    }
+
+    fullSizeImageWidth = Math.floor((windowHeight / fullScreenImage.height) * fullScreenImage.width);
+
     let fullSizeWidth = {
         width: fullSizeImageWidth + 'px',
     }
@@ -31,7 +28,6 @@ export function FullScreenGalleryImage(props) {
     //CSS to Apply
     //I'm cheating a little bit here. The 'style' of the width of what is being rendered doesn't update in the case where the browser still has h < w, but the window is narrower than the image. I fixed it by adding a max width to the css, but I think the right way to do this is to update the style on browser resize events. Because right now I'm not re-calling the full size adjustment ever (the image has already been rendered), or at least until we go into mobile mode in which case it doesn't matter. The image dynmically resizes fine once its already at full size because <Image> takes care of that responsiveness.
     let appliedCSS = 'fixed bg-zinc-900 top-2/4 -translate-y-1/2 left-2/4 -translate-x-1/2 z-20 mr-2 last:mr-0 max-w-full';
-
 
     return (
         <div className='fixed z-20 inset-0 bg-zinc-900 hover:cursor-pointer' onClick={() => props.updateFullScreenArt(null)}>

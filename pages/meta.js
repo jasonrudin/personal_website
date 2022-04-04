@@ -7,6 +7,7 @@ import { GalleryList } from '../components/GalleryList';
 import { GalleryNavigation } from '../components/GalleryNavigation';
 import { projectDataArray } from '../components/projectData';
 import GalleryWrapper from '../components/GalleryWrapper';
+import GoogleAnalyticsScript from '../components/GoogleAnalyticsScript';
 
 export default function MetaProjects() {
 
@@ -21,9 +22,10 @@ export default function MetaProjects() {
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
                 <link rel="manifest" href="/favicon/site.webmanifest" />
+                <GoogleAnalyticsScript/>
             </Head>
             <Script src="https://kit.fontawesome.com/4ff0ff850c.js" crossorigin="anonymous" />
-            <GalleryWrapper galleryData ={projectData} title="Meta" pageType = "meta" />
+            <GalleryWrapper galleryData={projectData} title="Meta" pageType="meta" />
         </div>
     )
 }

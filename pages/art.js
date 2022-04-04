@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { GalleryNavigation } from '../components/GalleryNavigation';
 import { artArray } from '../components/artData';
 import GalleryWrapper from '../components/GalleryWrapper';
+import GoogleAnalyticsScript from '../components/GoogleAnalyticsScript';
 
 export default function Art() {
 
@@ -20,6 +21,7 @@ export default function Art() {
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
                 <link rel="manifest" href="/favicon/site.webmanifest" />
+                <GoogleAnalyticsScript/>
             </Head>
             <Script src="https://kit.fontawesome.com/4ff0ff850c.js" crossorigin="anonymous" />
             <GalleryWrapper galleryData={artData} title="Art" pageType = "art" />

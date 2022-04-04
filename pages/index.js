@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
+import GoogleAnalyticsScript from '../components/GoogleAnalyticsScript'
 
 export default function Home() {
   return (
@@ -12,6 +12,7 @@ export default function Home() {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <GoogleAnalyticsScript/>
       </Head>
 
       <main className="">
@@ -67,7 +68,7 @@ export default function Home() {
         <p>Say hi on <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://twitter.com/jasonrudin" target="_blank" rel="noopener noreferrer">Twitter</a>, <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://www.linkedin.com/in/jasonrudin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, or email me at j.b.rudin [at] gmail [dot] com.</p>
       </section>
 
-      <footer className="text-xs font-light text-zinc-500 min-w-150">Last updated: March 30, 2022</footer>
+      <footer className="text-xs font-light text-zinc-500 min-w-150">Last updated: April 4, 2022</footer>
     </div>
   )
 }

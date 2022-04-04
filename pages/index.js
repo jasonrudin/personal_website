@@ -22,8 +22,9 @@ export default function Home() {
       <section className="mt-8 mb-4">
         <h3 className="text-lg text-zinc-700 mb-2">A Quick Intro</h3>
         <div>
-          <p className="my-1">Thanks for stopping by! I'm excited to set out on my own to build something truly new. I'm most excited by thinking about the interfaces between the public and private sector, and web3.</p>
-          <p className="my-1">I love this Churchill quote - "We shape our buildings; thereafter they shape us"</p>
+          <p className="my-1">Thanks for stopping by!</p>
+          <p> I'm setting out on my own to build something new. I'm most excited by interfaces between the public and private sector, and web3.</p>
+          <p className="my-1">I love this Churchill quote - "We shape our buildings; thereafter they shape us."</p>
           <p className="my-1">Proudly one of three brothers.</p>
         </div>
       </section>

@@ -96,6 +96,11 @@ function GalleryWrapper(props) {
                         console.log(fullScreenArtObjectPosition);
                     }
                 }
+                if (e.key === 'Escape' || e.key === 'q'){
+                    if(isFullScreen){
+                        updateFullScreenMode();
+                    }
+                }
             }
 
             window.addEventListener('keydown', handleKeyPress);

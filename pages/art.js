@@ -22,7 +22,7 @@ export default function Art() {
                 <link rel="manifest" href="/favicon/site.webmanifest" />
             </Head>
             <Script src="https://kit.fontawesome.com/4ff0ff850c.js" crossorigin="anonymous" />
-            <GalleryWrapper galleryData={artData} title="Art" pageType = "art" />
+            <GalleryWrapper galleryData={artData} title="Art" pageType = "art"/>
         </div>
     )
 }

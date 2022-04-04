@@ -8,7 +8,7 @@ export function GalleryObject(props) {
     return (
         <div className={props.isActiveOnDesktop ? shownOnDesktop : hiddenOnDesktop}>
             <div className="flex md:w-full">
-                <GalleryImage imageList={props.art.imageArray} updateFullScreenArt={props.updateFullScreenArt} />
+                <GalleryImage imageList={props.art.imageArray} updateFullScreenArt={props.updateFullScreenArt} updateFullScreenMode = {props.updateFullScreenMode}/>
             </div>
             <GalleryDescription image={props.art} pageType = {props.pageType} />
         </div>

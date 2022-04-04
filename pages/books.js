@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Books() {
     return (
-        <div className="text-zinc-700 font-ss max-w-xl mx-auto flex flex-col justify-center p-6 pt-20">
+        <div className="text-zinc-700 font-ss max-w-2xl mx-auto flex flex-col justify-center p-6 pt-20">
             <Head>
                 <title>Books</title>
                 <meta name="description" content="Jason Rudin's corner of the internet." />

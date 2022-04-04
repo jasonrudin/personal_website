@@ -1,6 +1,6 @@
 export const projectDataArray = [
     {
-        id: 1,
+        id: 0,
         title: "Chat Commands",
         medium: "Messenger, Instagram",
         designerAttribution: "Seyit Yilmaz",
@@ -11,12 +11,12 @@ export const projectDataArray = [
                 width: 1900,
                 height: 1824,
                 alt: "Slash commands on Messenger and Instagram.",
-                id: 1
+                id: 0
             }
         ]
     },
     {
-        id: 2,
+        id: 1,
         title: "Food Ordering and Gift Card Stickers",
         medium: "Instagram",
         designerAttribution: "Nate Hajian",
@@ -27,26 +27,26 @@ export const projectDataArray = [
                 width: 750,
                 height: 1624,
                 alt: "Gift Card Stories Sticker.",
-                id: 2
+                id: 1
             },
             {
                 url: "/static/img/meta/stories stickers_2.png",
                 width: 750,
                 height: 1624,
                 alt: "Gift Card Profile Button",
-                id: 3
+                id: 2
             },
             {
                 url: "/static/img/meta/stories stickers_3.png",
                 width: 750,
                 height: 1624,
                 alt: "Food Ordering Stories Sticker.",
-                id: 4
+                id: 3
             }
         ]
     },
     {
-        id: 3,
+        id: 2,
         title: "WhatsApp Account Linking",
         medium: "Instagram",        
         designerAttribution: "Zach Moore",
@@ -57,19 +57,19 @@ export const projectDataArray = [
                 width: 750,
                 height: 1624,
                 alt: "WhatsApp account linking set up flow",
-                id: 5
+                id: 4
             },
             {
                 url: "/static/img/meta/whatsapp_2.png",
                 width: 750,
                 height: 1624,
                 alt: "Profile Message button selector",
-                id: 6
+                id: 5
             }
         ]
     },
     {
-        id: 4,
+        id: 3,
         title: "Instagram Boost Payment Improvements",
         medium: "Instagram",
         designerAttribution: "Zach Moore",
@@ -80,12 +80,12 @@ export const projectDataArray = [
                 width: 1529,
                 height: 1015,
                 alt: "Payment account error messaging.",
-                id: 7
+                id: 6
             }
         ]
     },
     {
-        id: 5,
+        id: 4,
         title: "Facebook Search Ads",
         medium: "Facebook",
         designerAttribution: "Sue Kim",
@@ -96,19 +96,19 @@ export const projectDataArray = [
                 width: 750,
                 height: 1627,
                 alt: "Facebook Search ad carousel format",
-                id: 8
+                id: 7
             },
             {
                 url: "/static/img/meta/search ads_2.png",
                 width: 750,
                 height: 1627,
                 alt: "Facebook Search ad single image format",
-                id: 9
+                id: 8
             }
         ]
     },
     {
-        id: 6,
+        id: 5,
         title: "Fact Checking",
         medium: "Facebook",
         designerAttribution: "N/A",
@@ -119,12 +119,12 @@ export const projectDataArray = [
                 width: 4032,
                 height: 3024,
                 alt: "Big Sur, California.",
-                id: 10
+                id: 9
             }
         ]
     },
     {
-        id: 7,
+        id: 6,
         title: "Facebook Stories on mobile web",
         medium: "Facebook",
         designerAttribution: "Dan Leibowitz",
@@ -135,21 +135,21 @@ export const projectDataArray = [
                 width: 946,
                 height: 2048,
                 alt: "Facebook Stories on mobile web: sharing entry point",
-                id: 11
+                id: 10
             },
             {
                 url: "/static/img/meta/web stories_2.jpeg",
                 width: 946,
                 height: 2048,
                 alt: "Facebook Stories on mobile web: sharing flow",
-                id: 12
+                id: 11
             },
             {
                 url: "/static/img/meta/web stories_3.jpeg",
                 width: 946,
                 height: 2048,
                 alt: "Facebook Stories on mobile web: viewing experience",
-                id: 13
+                id: 12
             }
         ]
     },

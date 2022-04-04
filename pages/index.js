@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className="text-zinc-700 font-ss max-w-xl mx-auto flex flex-col justify-center p-6 pt-20">
+    <div className="text-zinc-700 font-ss max-w-2xl mx-auto flex flex-col justify-center p-6 pt-20">
       <Head>
         <title>Jason Rudin</title>
         <meta name="description" content="Jason Rudin's corner of the internet." />
@@ -24,7 +24,8 @@ export default function Home() {
       <section className="mt-8 mb-4">
         <h3 className="text-lg text-zinc-700 mb-2">A Quick Intro</h3>
         <div>
-          <p className="my-1">Thanks for stopping by! I think accelerating progress is one of the most important things to work on. I am fascinated by the connections between government and the private sector.</p>
+          <p className="my-1">Thanks for stopping by! I'm excited to set out on my own to build something truly new. I'm most excited by thinking about the interfaces between the public and private sector, and web3.</p>
+          <p className="my-1">I love this Churchill quote - "We shape our buildings; thereafter they shape us"</p>
           <p className="my-1">Proudly one of three brothers.</p>
         </div>
       </section>
@@ -66,7 +67,7 @@ export default function Home() {
         <p>Say hi on <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://twitter.com/jasonrudin" target="_blank" rel="noopener noreferrer">Twitter</a>, <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://www.linkedin.com/in/jasonrudin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, or email me at j.b.rudin [at] gmail [dot] com.</p>
       </section>
 
-      <footer className="text-xs font-light text-zinc-500 min-w-150">Last updated: March 26, 2022</footer>
+      <footer className="text-xs font-light text-zinc-500 min-w-150">Last updated: March 30, 2022</footer>
     </div>
   )
 }

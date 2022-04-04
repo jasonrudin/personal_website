@@ -10,7 +10,7 @@ export function GalleryImage(props) {
 
     return (
         props.imageList.map((image, index) => (
-            <ImageWrapper img={image} key={image.id} appliedCSS={appliedCSS} width={width} updateFullScreenArt={props.updateFullScreenArt} />
+            <ImageWrapper img={image} key={image.id} appliedCSS={appliedCSS} width={width} updateFullScreenArt={props.updateFullScreenArt} updateFullScreenMode = {props.updateFullScreenMode}/>
         ))
     );
 }

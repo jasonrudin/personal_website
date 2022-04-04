@@ -38,35 +38,35 @@ export function FullScreenGalleryImage(props) {
                     props.updateFullScreenArt(null);
                 }}>
             <span className="text-white inline-block px-4 pt-4 fixed z-30 drop-shadow"><FontAwesomeIcon icon={faXmark} size="lg" /></span>
-            <ImageWrapper img={fullScreenImage} key={fullScreenImage.id} width={fullSizeWidth} appliedCSS={appliedCSS} updateFullScreenArt={props.updateFullScreenArt} updateFullScreenMode = {props.updateFullScreenMode} />
-        </ div>
-            )
+            <ImageWrapper img={fullScreenImage} key={fullScreenImage.id} width={fullSizeWidth} appliedCSS={appliedCSS} updateFullScreenArt={props.updateFullScreenArt} updateFullScreenMode={props.updateFullScreenMode} />
+        </div>
+    )
 }
 
-            function useWindowDimensions() {
+function useWindowDimensions() {
     const hasWindow = typeof window !== 'undefined';
 
-            function getWindowDimensions() {
+    function getWindowDimensions() {
         const windowWidth = hasWindow ? window.innerWidth : null;
-            const windowHeight = hasWindow ? window.innerHeight : null;
-            return {
-                windowWidth,
-                windowHeight,
+        const windowHeight = hasWindow ? window.innerHeight : null;
+        return {
+            windowWidth,
+            windowHeight,
         };
     }
 
-            const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
     useEffect(() => {
         if (hasWindow) {
-                function handleResize() {
-                    setWindowDimensions(getWindowDimensions());
-                }
+            function handleResize() {
+                setWindowDimensions(getWindowDimensions());
+            }
 
             window.addEventListener('resize', handleResize);
             return () => window.removeEventListener('resize', handleResize);
         }
     }, [hasWindow]);
 
-            return windowDimensions;
+    return windowDimensions;
 }

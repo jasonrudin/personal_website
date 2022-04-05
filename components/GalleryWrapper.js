@@ -108,6 +108,10 @@ function GalleryWrapper(props) {
         }
     });
 
+    function incrementFullScreenImage(){
+        
+    }
+
 
     return (
         <section>
@@ -120,7 +124,7 @@ function GalleryWrapper(props) {
                 <GalleryList artData={galleryData} currentlyActive={activeGalleryObjectPosition} updateFullScreenArt={updateFullScreenArtObjectPosition} updateFullScreenMode={updateFullScreenMode} pageType={props.pageType} />
             </div>
             {isFullScreen &&
-                <FullScreenGalleryImage updateFullScreenArt={updateFullScreenArtObjectPosition} updateFullScreenMode={updateFullScreenMode} fullScreenArtObjectPosition={fullScreenArtObjectPosition} artData={galleryData}></FullScreenGalleryImage>
+                <FullScreenGalleryImage updateFullScreenArtObjectPosition={updateFullScreenArtObjectPosition} updateFullScreenMode={updateFullScreenMode} fullScreenArtObjectPosition={fullScreenArtObjectPosition} galleryData={galleryData} activeGalleryObjectPosition = {activeGalleryObjectPosition} updatePosition = {updatePosition}></FullScreenGalleryImage>
             }
         </section>
     );

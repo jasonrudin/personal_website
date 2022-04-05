@@ -6,10 +6,10 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 export function FullScreenGalleryImage(props) {
     //figure out which image to render 
     let fullScreenImage = null;
-    for (let i = 0; i < props.artData.length; i++) {
-        for (let j = 0; j < props.artData[i].imageArray.length; j++) {
-            if (props.artData[i].imageArray[j].id === props.fullScreenArtObjectPosition) {
-                fullScreenImage = props.artData[i].imageArray[j];
+    for (let i = 0; i < props.galleryData.length; i++) {
+        for (let j = 0; j < props.galleryData[i].imageArray.length; j++) {
+            if (props.galleryData[i].imageArray[j].id === props.fullScreenArtObjectPosition) {
+                fullScreenImage = props.galleryData[i].imageArray[j];
             }
         }
     }
@@ -33,12 +33,35 @@ export function FullScreenGalleryImage(props) {
     return (
         <div className='fixed z-20 inset-0 bg-zinc-900 hover:cursor-pointer'
             onClick={
-                function () {
-                    props.updateFullScreenMode();
-                    props.updateFullScreenArt(null);
+                //TO DO: REFACTOR ADVANCE/DECREMENT FUNCTIONS IN GALLERY WRAPPER, MOVE TO SEPARETE FILE, IMPORT INTO THIS FILE, AND PLOP IT IN.
+                function (e) {
+                    let imageArray = props.galleryData[props.activeGalleryObjectPosition].imageArray;
+                    let getImageArrayPosition = (image) => image.id === props.fullScreenArtObjectPosition;
+                    let currentImagePosition = imageArray.findIndex(getImageArrayPosition);
+                    if (e.clientX < windowWidth / 6 && windowWidth < 768) {
+                        
+                    }
+                    else if (e.clientX > windowWidth * 5 / 6 && windowWidth < 768) {
+                        if (currentImagePosition + 1 < imageArray.length) {
+                            props.updateFullScreenArtObjectPosition(props.fullScreenArtObjectPosition + 1);
+                        }
+                        else if (props.activeGalleryObjectPosition + 1 >= props.galleryData.length) {
+                            props.setActiveObjectPosition(0);
+                            props.updateFullScreenArtObjectPosition(0);
+
+                        }
+                        else {
+                            props.updateFullScreenArtObjectPosition(props.fullScreenArtObjectPosition + 1);
+                            props.updatePosition(1);
+                        }
+                    }
+                    else {
+                        props.updateFullScreenMode();
+                        props.updateFullScreenArtObjectPosition(null);
+                    }
                 }}>
             <span className="text-white inline-block px-4 pt-4 fixed z-30 drop-shadow"><FontAwesomeIcon icon={faXmark} size="lg" /></span>
-            <ImageWrapper img={fullScreenImage} key={fullScreenImage.id} width={fullSizeWidth} appliedCSS={appliedCSS} updateFullScreenArt={props.updateFullScreenArt} updateFullScreenMode={props.updateFullScreenMode} />
+            <ImageWrapper img={fullScreenImage} key={fullScreenImage.id} width={fullSizeWidth} appliedCSS={appliedCSS} updateFullScreenArt={props.updateFullScreenArtObjectPosition} updateFullScreenMode={props.updateFullScreenMode} />
         </div>
     )
 }

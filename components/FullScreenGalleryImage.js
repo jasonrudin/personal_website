@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ImageWrapper } from "./ImageWrapper";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { useWindowDimensions } from './GalleryWrapper';
 
 export function FullScreenGalleryImage(props) {
     //figure out which image to render 
@@ -31,65 +32,52 @@ export function FullScreenGalleryImage(props) {
     let appliedCSS = 'fixed bg-zinc-900 top-2/4 -translate-y-1/2 left-2/4 -translate-x-1/2 mr-2 last:mr-0 max-w-full';
 
     return (
-        <div className='fixed z-20 inset-0 bg-zinc-900 hover:cursor-pointer'
-            onClick={
-                //TO DO: REFACTOR ADVANCE/DECREMENT FUNCTIONS IN GALLERY WRAPPER, MOVE TO SEPARETE FILE, IMPORT INTO THIS FILE, AND PLOP IT IN.
-                function (e) {
-                    let imageArray = props.galleryData[props.activeGalleryObjectPosition].imageArray;
-                    let getImageArrayPosition = (image) => image.id === props.fullScreenArtObjectPosition;
-                    let currentImagePosition = imageArray.findIndex(getImageArrayPosition);
-                    if (e.clientX < windowWidth / 6 && windowWidth < 768) {
-                        
-                    }
-                    else if (e.clientX > windowWidth * 5 / 6 && windowWidth < 768) {
-                        if (currentImagePosition + 1 < imageArray.length) {
-                            props.updateFullScreenArtObjectPosition(props.fullScreenArtObjectPosition + 1);
+        <>
+            <span className="text-white inline-block px-4 pt-4 fixed top-0 left-0 z-30 drop-shadow hover:cursor-pointer"
+                onClick={() => {
+                    props.updateFullScreenMode();
+                    props.updateFullScreenArtObjectPosition(null);
+                }}
+            ><FontAwesomeIcon icon={faXmark} size="lg" /></span>
+            <div className='fixed z-10 inset-0 bg-zinc-900 hover:cursor-pointer'
+                onClick={
+                    //TO DO: REFACTOR ADVANCE/DECREMENT FUNCTIONS IN GALLERY WRAPPER, MOVE TO SEPARETE FILE, IMPORT INTO THIS FILE, AND PLOP IT IN.
+                    function (e) {
+                        let imageArray = props.galleryData[props.activeGalleryObjectPosition].imageArray;
+                        let getImageArrayPosition = (image) => image.id === props.fullScreenArtObjectPosition;
+                        let currentImagePosition = imageArray.findIndex(getImageArrayPosition);
+                        if (e.clientX < windowWidth / 6 && windowWidth < 768) {
+                            console.log('decrement');
+                            props.decrementFullScreenImage();
                         }
-                        else if (props.activeGalleryObjectPosition + 1 >= props.galleryData.length) {
-                            props.setActiveObjectPosition(0);
-                            props.updateFullScreenArtObjectPosition(0);
+                        else if (e.clientX > windowWidth * 5 / 6 && windowWidth < 768) {
+                            if (currentImagePosition + 1 < imageArray.length) {
+                                props.updateFullScreenArtObjectPosition(props.fullScreenArtObjectPosition + 1);
+                            }
+                            else if (props.activeGalleryObjectPosition + 1 >= props.galleryData.length) {
+                                props.setActiveObjectPosition(0);
+                                props.updateFullScreenArtObjectPosition(0);
 
+                            }
+                            else {
+                                props.updateFullScreenArtObjectPosition(props.fullScreenArtObjectPosition + 1);
+                                props.updatePosition(1);
+                            }
                         }
                         else {
-                            props.updateFullScreenArtObjectPosition(props.fullScreenArtObjectPosition + 1);
-                            props.updatePosition(1);
+                            props.updateFullScreenMode();
+                            props.updateFullScreenArtObjectPosition(null);
                         }
-                    }
-                    else {
-                        props.updateFullScreenMode();
-                        props.updateFullScreenArtObjectPosition(null);
-                    }
-                }}>
-            <span className="text-white inline-block px-4 pt-4 fixed z-30 drop-shadow"><FontAwesomeIcon icon={faXmark} size="lg" /></span>
-            <ImageWrapper img={fullScreenImage} key={fullScreenImage.id} width={fullSizeWidth} appliedCSS={appliedCSS} updateFullScreenArt={props.updateFullScreenArtObjectPosition} updateFullScreenMode={props.updateFullScreenMode} />
-        </div>
+                    }}>
+                <ImageWrapper
+                    img={fullScreenImage}
+                    key={fullScreenImage.id}
+                    width={fullSizeWidth}
+                    appliedCSS={appliedCSS}
+                    updateFullScreenArt={props.updateFullScreenArtObjectPosition}
+                    updateFullScreenMode={props.updateFullScreenMode}
+                />
+            </div>
+        </>
     )
-}
-
-function useWindowDimensions() {
-    const hasWindow = typeof window !== 'undefined';
-
-    function getWindowDimensions() {
-        const windowWidth = hasWindow ? window.innerWidth : null;
-        const windowHeight = hasWindow ? window.innerHeight : null;
-        return {
-            windowWidth,
-            windowHeight,
-        };
-    }
-
-    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-    useEffect(() => {
-        if (hasWindow) {
-            function handleResize() {
-                setWindowDimensions(getWindowDimensions());
-            }
-
-            window.addEventListener('resize', handleResize);
-            return () => window.removeEventListener('resize', handleResize);
-        }
-    }, [hasWindow]);
-
-    return windowDimensions;
 }

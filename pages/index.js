@@ -66,7 +66,7 @@ export default function Home() {
         <p>Say hi on <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://twitter.com/jasonrudin" target="_blank" rel="noopener noreferrer">Twitter</a>, <a className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75" href="https://www.linkedin.com/in/jasonrudin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, or email me at j.b.rudin [at] gmail [dot] com.</p>
       </section>
 
-      <footer className="text-xs font-light text-zinc-500 min-w-150">Last updated: April 4, 2022</footer>
+      <footer className="text-xs font-light text-zinc-500 min-w-150">Last updated: April 6, 2022</footer>
     </div>
   )
 }

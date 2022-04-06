@@ -3,12 +3,15 @@ import { GalleryList } from '../components/GalleryList';
 import React, { useState, useEffect } from 'react';
 import { GalleryNavigation } from './GalleryNavigation';
 import Link from 'next/link';
+import MobileFullScreenNav from './MobileFullScreenNav';
 
 function GalleryWrapper(props) {
     const [activeGalleryObjectPosition, setActiveObjectPosition] = useState(0);
     const [fullScreenArtObjectPosition, setFullScreenArtObjectPosition] = useState(0);
     const [isFullScreen, setIsFullScreen] = useState(false);
     const galleryData = props.galleryData;
+    const { windowHeight, windowWidth } = useWindowDimensions();
+    let isSmallWindow = windowWidth <= 768;
 
     function updatePosition(x) {
         let newPosition = activeGalleryObjectPosition + x;
@@ -47,21 +50,7 @@ function GalleryWrapper(props) {
 
                 if (e.key === 'ArrowRight') {
                     if (isFullScreen) {
-                        //fist, get the current gallery object and active full screen image.
-                        //then, see if there's room in the Object's image array to advance by one. If so, do that.
-                        //if you're at the end of the array, increment the object position and reset the image position to 0.
-                        if (currentImagePosition + 1 < imageArray.length) {
-                            setFullScreenArtObjectPosition(fullScreenArtObjectPosition + 1);
-                        }
-                        else if (activeGalleryObjectPosition + 1 >= galleryData.length) {
-                            setActiveObjectPosition(0);
-                            setFullScreenArtObjectPosition(0);
-
-                        }
-                        else {
-                            setFullScreenArtObjectPosition(fullScreenArtObjectPosition + 1);
-                            updatePosition(1);
-                        }
+                        incrementFullScreenImage();
                     }
                     else {
                         updatePosition(1);
@@ -71,24 +60,7 @@ function GalleryWrapper(props) {
                 }
                 if (e.key === 'ArrowLeft') {
                     if (isFullScreen) {
-                        //fist, get the current gallery object and active full screen image.
-                        //then, see if there's room in the Object's image array to decrement by one. If so, do that.
-                        if (currentImagePosition - 1 >= 0) {
-                            setFullScreenArtObjectPosition(fullScreenArtObjectPosition - 1);
-                        }
-                        //If you're at the beginning of the art data list, jump to the last image/object in the list.
-                        else if (activeGalleryObjectPosition === 0) {
-                            let newArtObject = galleryData[galleryData.length - 1];
-                            setActiveObjectPosition(galleryData.length - 1);
-                            setFullScreenArtObjectPosition(newArtObject.imageArray[newArtObject.imageArray.length - 1].id);
-
-                        }
-                        //if you're at the beginning of an art object but there's room to go back, just decrement the position and set the full screen object to the last in the new image array.
-                        else {
-                            let newArtObject = galleryData[activeGalleryObjectPosition - 1];
-                            setFullScreenArtObjectPosition(newArtObject.imageArray[newArtObject.imageArray.length - 1].id);
-                            updatePosition(-1);
-                        }
+                        decrementFullScreenImage();
                     }
                     else {
                         updatePosition(-1);
@@ -96,8 +68,8 @@ function GalleryWrapper(props) {
                         console.log(fullScreenArtObjectPosition);
                     }
                 }
-                if (e.key === 'Escape' || e.key === 'q'){
-                    if(isFullScreen){
+                if (e.key === 'Escape' || e.key === 'q') {
+                    if (isFullScreen) {
                         updateFullScreenMode();
                     }
                 }
@@ -108,10 +80,51 @@ function GalleryWrapper(props) {
         }
     });
 
-    function incrementFullScreenImage(){
-        
+    function incrementFullScreenImage() {
+        //fist, get the current gallery object and active full screen image.
+        //then, see if there's room in the Object's image array to advance by one. If so, do that.
+        //if you're at the end of the array, increment the object position and reset the image position to 0.
+        let imageArray = galleryData[activeGalleryObjectPosition].imageArray;
+        let getImageArrayPosition = (image) => image.id === fullScreenArtObjectPosition;
+        let currentImagePosition = imageArray.findIndex(getImageArrayPosition);
+
+        if (currentImagePosition + 1 < imageArray.length) {
+            setFullScreenArtObjectPosition(fullScreenArtObjectPosition + 1);
+        }
+        else if (activeGalleryObjectPosition + 1 >= galleryData.length) {
+            setActiveObjectPosition(0);
+            setFullScreenArtObjectPosition(0);
+
+        }
+        else {
+            setFullScreenArtObjectPosition(fullScreenArtObjectPosition + 1);
+            updatePosition(1);
+        }
     }
 
+    function decrementFullScreenImage() {
+        let imageArray = galleryData[activeGalleryObjectPosition].imageArray;
+        let getImageArrayPosition = (image) => image.id === fullScreenArtObjectPosition;
+        let currentImagePosition = imageArray.findIndex(getImageArrayPosition);
+        //fist, get the current gallery object and active full screen image.
+        //then, see if there's room in the Object's image array to decrement by one. If so, do that.
+        if (currentImagePosition - 1 >= 0) {
+            setFullScreenArtObjectPosition(fullScreenArtObjectPosition - 1);
+        }
+        //If you're at the beginning of the art data list, jump to the last image/object in the list.
+        else if (activeGalleryObjectPosition === 0) {
+            let newArtObject = galleryData[galleryData.length - 1];
+            setActiveObjectPosition(galleryData.length - 1);
+            setFullScreenArtObjectPosition(newArtObject.imageArray[newArtObject.imageArray.length - 1].id);
+
+        }
+        //if you're at the beginning of an art object but there's room to go back, just decrement the position and set the full screen object to the last in the new image array.
+        else {
+            let newArtObject = galleryData[activeGalleryObjectPosition - 1];
+            setFullScreenArtObjectPosition(newArtObject.imageArray[newArtObject.imageArray.length - 1].id);
+            updatePosition(-1);
+        }
+    }
 
     return (
         <section>
@@ -124,10 +137,51 @@ function GalleryWrapper(props) {
                 <GalleryList artData={galleryData} currentlyActive={activeGalleryObjectPosition} updateFullScreenArt={updateFullScreenArtObjectPosition} updateFullScreenMode={updateFullScreenMode} pageType={props.pageType} />
             </div>
             {isFullScreen &&
-                <FullScreenGalleryImage updateFullScreenArtObjectPosition={updateFullScreenArtObjectPosition} updateFullScreenMode={updateFullScreenMode} fullScreenArtObjectPosition={fullScreenArtObjectPosition} galleryData={galleryData} activeGalleryObjectPosition = {activeGalleryObjectPosition} updatePosition = {updatePosition}></FullScreenGalleryImage>
+                <>
+                {isSmallWindow && <MobileFullScreenNav direction = "forward" onClick = {incrementFullScreenImage}/>}
+                    <FullScreenGalleryImage
+                        updateFullScreenArtObjectPosition={updateFullScreenArtObjectPosition}
+                        updateFullScreenMode={updateFullScreenMode}
+                        fullScreenArtObjectPosition={fullScreenArtObjectPosition}
+                        galleryData={galleryData}
+                        activeGalleryObjectPosition={activeGalleryObjectPosition}
+                        updatePosition={updatePosition}
+                        incrementFullScreenImage={incrementFullScreenImage}
+                        decrementFullScreenImage={decrementFullScreenImage}
+                    />
+                    {isSmallWindow && <MobileFullScreenNav direction = "backward" onClick = {decrementFullScreenImage}/>}
+                </>
             }
         </section>
     );
 }
 
 export default GalleryWrapper;
+
+export function useWindowDimensions() {
+    const hasWindow = typeof window !== 'undefined';
+
+    function getWindowDimensions() {
+        const windowWidth = hasWindow ? window.innerWidth : null;
+        const windowHeight = hasWindow ? window.innerHeight : null;
+        return {
+            windowWidth,
+            windowHeight,
+        };
+    }
+
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+    useEffect(() => {
+        if (hasWindow) {
+            function handleResize() {
+                setWindowDimensions(getWindowDimensions());
+            }
+
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
+    }, [hasWindow]);
+
+    return windowDimensions;
+}

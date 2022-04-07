@@ -4,7 +4,7 @@ export function ImageWrapper(props) {
     return (
         <div className={props.appliedCSS}
             onClick={function (event) {
-                props.updateFullScreenArt(props.img.id);
+                props.updateFullScreenArt(props.img.id, props.objectID);
                 props.updateFullScreenMode();
             }}
             style={props.width}>

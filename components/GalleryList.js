@@ -6,7 +6,7 @@ export function GalleryList(props) {
     
     return (
         props.artData.map((image, index) => (
-            <GalleryObject art={image} key={image.id} isActiveOnDesktop={index === props.currentlyActive ? true : false} updateFullScreenArt={props.updateFullScreenArt} updateFullScreenMode = {props.updateFullScreenMode} pageType = {props.pageType} />
+            <GalleryObject art={image} key={image.id} objectID = {image.id} isActiveOnDesktop={index === props.currentlyActive ? true : false} updateFullScreenArt={props.updateFullScreenArt} updateFullScreenMode = {props.updateFullScreenMode} pageType = {props.pageType} />
         ))
     );
 }

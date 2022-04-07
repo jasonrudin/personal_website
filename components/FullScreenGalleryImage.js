@@ -36,38 +36,14 @@ export function FullScreenGalleryImage(props) {
             <span className="text-white inline-block px-4 pt-4 fixed top-0 left-0 z-30 drop-shadow hover:cursor-pointer"
                 onClick={() => {
                     props.updateFullScreenMode();
-                    props.updateFullScreenArtObjectPosition(null);
+                    //props.updateFullScreenArtObjectPosition(props.updateFullScreenArtObjectPosition, props.activeGalleryObjectPosition);
                 }}
             ><FontAwesomeIcon icon={faXmark} size="lg" /></span>
             <div className='fixed z-10 inset-0 bg-zinc-900 hover:cursor-pointer'
                 onClick={
-                    //TO DO: REFACTOR ADVANCE/DECREMENT FUNCTIONS IN GALLERY WRAPPER, MOVE TO SEPARETE FILE, IMPORT INTO THIS FILE, AND PLOP IT IN.
                     function (e) {
-                        let imageArray = props.galleryData[props.activeGalleryObjectPosition].imageArray;
-                        let getImageArrayPosition = (image) => image.id === props.fullScreenArtObjectPosition;
-                        let currentImagePosition = imageArray.findIndex(getImageArrayPosition);
-                        if (e.clientX < windowWidth / 6 && windowWidth < 768) {
-                            console.log('decrement');
-                            props.decrementFullScreenImage();
-                        }
-                        else if (e.clientX > windowWidth * 5 / 6 && windowWidth < 768) {
-                            if (currentImagePosition + 1 < imageArray.length) {
-                                props.updateFullScreenArtObjectPosition(props.fullScreenArtObjectPosition + 1);
-                            }
-                            else if (props.activeGalleryObjectPosition + 1 >= props.galleryData.length) {
-                                props.setActiveObjectPosition(0);
-                                props.updateFullScreenArtObjectPosition(0);
-
-                            }
-                            else {
-                                props.updateFullScreenArtObjectPosition(props.fullScreenArtObjectPosition + 1);
-                                props.updatePosition(1);
-                            }
-                        }
-                        else {
                             props.updateFullScreenMode();
-                            props.updateFullScreenArtObjectPosition(null);
-                        }
+                            props.updateFullScreenArtObjectPosition(fullScreenImage.id, props.activeGalleryObjectPosition);
                     }}>
                 <ImageWrapper
                     img={fullScreenImage}
@@ -76,6 +52,7 @@ export function FullScreenGalleryImage(props) {
                     appliedCSS={appliedCSS}
                     updateFullScreenArt={props.updateFullScreenArtObjectPosition}
                     updateFullScreenMode={props.updateFullScreenMode}
+                    objectID = {props.activeGalleryObjectPosition}
                 />
             </div>
         </>

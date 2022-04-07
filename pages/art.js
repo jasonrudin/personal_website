@@ -9,8 +9,6 @@ import GalleryWrapper from '../components/GalleryWrapper';
 export default function Art() {
 
     const artData = artArray;
-
-
     return (
         <div className="text-zinc-700 font-ss pt-20 max-w-3xl mx-auto flex flex-col justify-center p-6 md:pb-0">
             <Head>

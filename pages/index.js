@@ -23,7 +23,7 @@ export default function Home() {
         <h3 className="text-lg text-zinc-700 mb-2">A Quick Intro</h3>
         <div>
           <p className="my-1">Thanks for stopping by!</p>
-          <p> I'm most excited by how get things in the physical world built faster. I'm building <a target = "_blank" href = "https://www.withclad.com" className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">Clad</a>, an operating system for telecom construction.</p>
+          <p> I'm most excited by how get things in the physical world built faster. I'm building <a target = "_blank" rel="noopener noreferrer" href = "https://www.withclad.com" className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">Clad</a>, an operating system for telecom construction.</p>
           <p className="my-1">I love this Churchill quote - "We shape our buildings; thereafter they shape us."</p>
           <p className="my-1">Proudly one of three brothers.</p>
         </div>
@@ -33,7 +33,7 @@ export default function Home() {
         <div>
           <ul className="">
             <li className="flex flex-row items-baseline justify-between">
-              <div className=""><a target = "_blank" href = "https://www.withclad.com" className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">Founder, Clad</a></div>
+              <div className=""><a target = "_blank" rel="noopener noreferrer" href = "https://www.withclad.com" className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">Founder, Clad</a></div>
               <div className="text-sm font-light text-zinc-500 justify-self-end min-w-[100px]">2022 — </div>
             </li>
             <li className="flex flex-row items-baseline justify-between my-1">

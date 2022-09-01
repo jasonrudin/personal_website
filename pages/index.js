@@ -23,7 +23,7 @@ export default function Home() {
         <h3 className="text-lg text-zinc-700 mb-2">A Quick Intro</h3>
         <div>
           <p className="my-1">Thanks for stopping by!</p>
-          <p> I'm most excited by how get things in the physical world built faster. I'm building <a target = "_blank" rel="noopener noreferrer" href = "https://www.withclad.com" className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">Clad</a>, the operating system for telecom construction.</p>
+          <p> I love learning about how things get built in the physical world. I'm building <a target = "_blank" rel="noopener noreferrer" href = "https://www.withclad.com" className="underline underline-offset-2 decoration-2 decoration-zinc-300 hover:decoration-zinc-700 transition duration-75">Clad</a>, the operating system for telecom construction.</p>
           <p className="my-1">I love this Churchill quote - "We shape our buildings; thereafter they shape us."</p>
           <p className="my-1">Proudly one of three brothers.</p>
         </div>
